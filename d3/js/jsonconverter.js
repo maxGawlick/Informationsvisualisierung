@@ -6,7 +6,7 @@ function getAll() {
      x = jsonsql.query("select * from json.journals", json);
      
      var count = x.length;
-     console.log("Anzahl Journals: ", count);
+     console.log("Anzahl Journals:  ", count);
 
  });
     
