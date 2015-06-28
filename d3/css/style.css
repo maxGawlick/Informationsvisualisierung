@@ -37,9 +37,11 @@ footer p {
 	font-size: 11px;
 }
 
+
 #chart {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
+    text-align: center;
 }
 #chart path {
   fill: none;
