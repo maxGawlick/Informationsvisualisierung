@@ -3,13 +3,14 @@ var keys = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt
 var montharray = [''];
 var testArray = ['200', '500', '800', '3000'];
 var largestArrayValue = null;
+var minArrayValue = null;
 var chart = radialBarChart()
   .barHeight(250)
   .reverseLayerOrder(true)
   .capitalizeLabels(true)
-  .barColors(['#B66199', '#9392CB', '#76D9FA', '#BCE3AD', '#FFD28C', '#F2918B'])
-  .domain([0,100])
-//  .tickValues(testArray)
+  .barColors(['#DA4453', '#48CFAD'])
+  .domain([0,100]);
+//  .tickValues([20,40,60,80,100,120,140,160]);
 //  .tickCircleValues([100,200,300,400,500,600, 700]);
 var tickValuesCount = 8;
 var tickArray = new Array();
@@ -30,6 +31,10 @@ function getDataAndChart(annual) {
     montharray[10] = parseInt(annual["Nov " + getSelectedYearShort()]);
     montharray[11] = parseInt(annual["Dec-" + getSelectedYearFull()]);
     
+//    for(var x = 0; x<montharray.length; x++) {
+//        if(montharray[x] >= 20000
+//    }
+    
     data = [{data: {}}]; 
     
     for(var i=0; i<keys.length; i++)
@@ -37,32 +42,46 @@ function getDataAndChart(annual) {
     
     /* get largest number value from array */
     largestArrayValue = Math.max.apply(Math, montharray);
-    
+    minArrayValue = Math.min.apply(Math, montharray);
+
     /* call fk to assign chart domain and tick values */
     assignChartDomain(largestArrayValue);
+//    assignChartTicks();
     
+    /* reset month text value */
+    document.getElementById("downloadsMonth").innerHTML = "Downloads Monat:";
     /* draw the chart */
     drawChart();
+    
+
     
 };
 
 /* set chart values according to displayed data */
 function assignChartDomain(largestValue) {
-    /* clear array */
-    tickArray.length = 0;
-    
     /*set chart domain from 0 to  10% over the highest data-value*/
     chart.domain([0,1.1*largestValue]);
+    
+    
+    
+    /* use prior filled array to display tickValues on the chart accordingly */
+    chart.tickValues(assignChartTicks);
+//    console.log(assignChartTicks());
+//    chart.tickCircleValues(tickArray);
+    
+}
+
+function assignChartTicks() {
+ /* clear array */
+    tickArray.length = 0;
+    
     
     /* fill array with values for chart-tickValues, always divide highest value in 8 same-sized parts (12,5% steps) */
     for(var i = 1; i <= tickValuesCount; i++) {  
       tickArray.push(Math.round(largestArrayValue*(i/8)));
     }
     
-    /* use prior filled array to display tickValues on the chart accordingly */
-    chart.tickValues(tickArray);
-    chart.tickCircleValues(tickArray);
-    
+    return tickArray;
 }
 
 /*update button*/
