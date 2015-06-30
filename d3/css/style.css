@@ -37,9 +37,11 @@ footer p {
 	font-size: 11px;
 }
 
+
 #chart {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
+    text-align: center;
 }
 #chart path {
   fill: none;
@@ -48,6 +50,11 @@ footer p {
 /* layers */
 #chart .layer-0 path {
   fill: steelblue;
+}
+/* hover für einzelen chart spalten */
+#chart .layer-0 path:hover {
+/*  fill: steelblue !important;*/
+    opacity: 0.7;
 }
 #chart .layer-1 path {
   fill: white !important;
