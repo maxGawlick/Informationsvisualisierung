@@ -27,8 +27,14 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Journal Explorer</a>
+    <a class="navbar-brand" href="index.html">Journal Explorer</a>
       </div>
+        <div>
+        <ul class="nav navbar-nav">
+        <li><a href="index.html">Suche</a></li>
+        <li class="active"><a>Vergleichen</a></li> 
+      </ul>
+        </div>
     </div>
   </nav>
 </div>
@@ -98,7 +104,7 @@
 
                     </div> <!-- /.container -->  
                 <hr>
-                <button id="updateGraph"class="btn btn-default" onClick="getJsonItems();">Update</button>
+                <button type="button" onClick="getJsonItems();" id="updateGraph"class="btn btn-default" >Update</button>
             </div>
         </div>
     </div>
@@ -111,11 +117,10 @@
             <h3 class="panel-title">Erfolgreiche Volltext-Anfragen</h3>
         </div>
         <div class="panel-body">
-            <!-- overlay -->
+           
             <div style="z-index:1; position:absolute;">
             <p id="downloadsTotal">Downloads Total: </p>
-            <p id="downloadsMonth">Downloads Monat: </p>
-            </div>
+            <p id="downloadsMonth">Downloads Monat: </p></div>
             
             <div id="chart"></div>
         </div>
