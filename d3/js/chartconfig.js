@@ -4,6 +4,8 @@ var montharray = [''];
 var testArray = ['200', '500', '800', '3000'];
 var largestArrayValue = null;
 var minArrayValue = null;
+var items = null;
+var selectedPublisher = [];
 var chart = radialBarChart()
   .barHeight(250)
   .reverseLayerOrder(true)
@@ -17,7 +19,6 @@ var tickArray = new Array();
 
 /* get needed values from 'annual' and fill them in chart-data-objcect, draw chart*/
 function getDataAndChart(annual) {
-    
     
     montharray[0] = parseInt(annual["Jan " + getSelectedYearShort()]);
     montharray[1] = parseInt(annual["Feb " + getSelectedYearShort()]);
@@ -92,7 +93,26 @@ function drawChart() {
 
 /* return value of selected radiobox */
 function getPublisherRadio() {
-  return $("input[name=verlagradio]:checked").val(); 
+    selectedPublisher = [];
+    items = $("input[name=verlagradio]:checked");
+    console.log("länge ", items.length);
+    for(var i = 0; i< items.length; i++){
+       
+            selectedPublisher.push($(items[i]).val());
+        
+        
+    }
+    queryString = "";
+    console.log("publisher " + selectedPublisher);
+    for(var publisher in selectedPublisher){
+        if(selectedPublisher.length == 1 || publisher == 0){
+                queryString = queryString + "Publisher=='" + selectedPublisher[publisher] + "' ";
+        }else if(selectedPublisher.length > 1 ){
+                queryString = queryString + " || Publisher=='" + selectedPublisher[publisher] + "' ";
+        }
+    }
+    console.log("QUERY: " +queryString);
+  return queryString; 
     
 }
 

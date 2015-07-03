@@ -1,23 +1,18 @@
 var lineChart;
+var publisherDataJson;
 var data;
-$(document).ready(function(){
-    generateCompareChart();
-})
-function onWidgetClick(){
-    data = getLineChartData();
-    $('.widget').toggleClass('flipped');
-}
+
+
+
 function generateCompareChart(data){
-    
+    console.log("data: ", data);
+    this.data = data;
+    publisherDataJson = JSON.stringify(data);
+    console.log(publisherDataJson);
     lineChart = c3.generate({
         bindto: "#chart2",
         data: {
-            
-            columns: [ 
-                ['Verlag1', 30, 200, 100, 400, 150, 250, 80, 330,700,200,280,100],
-                ['Verlag2', 50,100,120,130,140,200,500,350,100,600]
-            
-            ]
+            json: data
         },
         axis: {
             x:{
@@ -33,9 +28,8 @@ function generateCompareChart(data){
 function addData(){
     lineChart.load({
         columns:[
-            ['Verlag3', null, 30, 20, 50, 40, 60, 50,300,280,175,183,500]
-        ],
-        colors: {Verlag3: '#ff0000'}
+            publisherDataJson
+        ]
     });
 }
 function removeData(){
@@ -55,4 +49,16 @@ function transformDonut(){
     lineChart.transform('donut');
     
 }
-
+$(document).ready(function(){
+    $(':checkbox').change(function(){
+        console.log($(this).val());
+        if($(this).val() in data){
+            console.log("true");
+            lineChart.toggle($(this).val(),{withLegend: true});
+            
+        }else{
+            console.log("false");
+            getLineChartData();
+        }
+    })
+})
