@@ -30,9 +30,8 @@ function getJsonItems() {
         
 }
 
-<<<<<<< HEAD
-/* handle hover event on month-segments to show their values */
-=======
+
+
 function getLineChartData(){
     
     $.getJSON("./data/merge" + getSelectedYearFull() + ".json", function(json){
@@ -49,7 +48,7 @@ function getLineChartData(){
 }
 
 /* handle click event on month-segments to show their values */
->>>>>>> compareChart
+
 function updateDownloadsTextsMonth() {
     
      $(".layer-0").each(function(l, elem) 

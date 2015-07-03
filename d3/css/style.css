@@ -103,14 +103,7 @@ footer p {
     width:100%;
     margin-left:5px;
 }
-.widget-container {
-  position: relative;
-  overflow: hidden;
-  width: 75em;
-  height: 50em;
-      -webkit-perspective:800px; 
 
-<<<<<<< HEAD
 /* autocmplete styles */
 
 .tt-query {
@@ -168,7 +161,14 @@ footer p {
 /* background-color: #434A54; */
  color:#434A54;
 }
-=======
+
+
+.widget-container {
+  position: relative;
+  overflow: hidden;
+  width: 75em;
+  height: 50em;
+      -webkit-perspective:800px; 
 }
 
 
@@ -217,4 +217,4 @@ footer p {
   position: relative;
   left: 50%;
 }
->>>>>>> compareChart
+
