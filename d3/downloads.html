@@ -6,6 +6,7 @@
     
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
+    <link href="css/c3.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <title>Journal Explorer</title>
     <style>
@@ -17,7 +18,7 @@
   <body style="background-color: rgb(241, 242, 246);">
       
 
-      <div>  
+ <div>  
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -40,6 +41,7 @@
 </div>
 
       
+    <button id="showcompare" class="btn btn-default" onClick="onWidgetClick();">Compare</button>
  
 <div class="row cont">
 
@@ -104,13 +106,23 @@
 
                     </div> <!-- /.container -->  
                 <hr>
+<<<<<<< HEAD:d3/downloads.html
                 <button type="button" onClick="getJsonItems();" id="updateGraph"class="btn btn-default" >Update</button>
+=======
+                <button id="updateGraph"class="btn btn-default" onClick="getJsonItems();">Update</button>
+                <button id="addData" class="btn btn-default" onClick="addData();">AddData</button>
+                <button id="removeData" class="btn btn-default" onClick="removeData();">removeData</button>
+                <button id="transformBar" class="btn btn-default" onClick="transformBar();">Bar Chart</button>
+                <button id="transformLine" class="btn btn-default" onClick="transformLine();">Line Chart</button>
+                <button id="transformDonut" class="btn btn-default" onClick="transformDonut();">Donut Chart</button>
+>>>>>>> compareChart:d3/index.html
             </div>
         </div>
     </div>
 <!--      </nav>-->
     
 <!--    <article class="">-->
+<<<<<<< HEAD:d3/downloads.html
     <div class="col-md-9">  
       <div class="panel panel-danger">
         <div class="panel-heading">
@@ -125,7 +137,36 @@
             <div id="chart"></div>
         </div>
       </div>
+=======
+    <div class="widget-container">
+     <div class="col-md-9 widget">
+          <div class="panel panel-danger widget-content front">
+            <div class="panel-heading">
+                <h3 class="panel-title">Erfolgreiche Volltext-Anfragen</h3>
+            </div>
+            <div class="panel-body">
+                <!-- overlay -->
+                <div style=" position:absolute;">
+                <p id="downloadsTotal">Downloads Total: </p>
+                <p id="downloadsMonth">Downloads Monat: </p>
+                </div>
+
+                <div id="chart"></div>
+            </div>
+          </div>
+          <div class="panel panel-danger widget-content back">
+            <div class="panel-heading">
+                <h3 class="panel-title">Erfolgreiche Anfragen pro Monat</h3>
+            </div>
+            <div class="panel-body">
+                <div id="chart2"></div>
+            </div>
+          </div>
+        
+>>>>>>> compareChart:d3/index.html
      </div> 
+    </div>
+   
 <!--    </article>  /col-md-8 -->
 
 
@@ -133,12 +174,13 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-    <script src="js/d3.v3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/c3.min.js"></script>
     <script src="js/radialBarChart.js"></script>
     <script src="js/jsonsql.js"></script>
     <script src="js/chartconfig.js"></script>
     <script src="js/getJsonData.js"></script>
+    <script src="js/compare.js"></script>
       
 
   </body>

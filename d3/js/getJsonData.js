@@ -30,7 +30,26 @@ function getJsonItems() {
         
 }
 
+<<<<<<< HEAD
 /* handle hover event on month-segments to show their values */
+=======
+function getLineChartData(){
+    
+    $.getJSON("./data/merge" + getSelectedYearFull() + ".json", function(json){
+    
+     query = "select * from json.journals where (Publisher=='' + getPublisherRadio() && Title=='Total for all journals')";
+     
+     totalDownloads = jsonsql.query(query, json);
+     
+     console.log("json objekt: ", totalDownloads);
+
+          
+ });
+    return totalDownloads;
+}
+
+/* handle click event on month-segments to show their values */
+>>>>>>> compareChart
 function updateDownloadsTextsMonth() {
     
      $(".layer-0").each(function(l, elem) 

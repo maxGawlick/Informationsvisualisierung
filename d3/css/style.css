@@ -103,7 +103,14 @@ footer p {
     width:100%;
     margin-left:5px;
 }
+.widget-container {
+  position: relative;
+  overflow: hidden;
+  width: 75em;
+  height: 50em;
+      -webkit-perspective:800px; 
 
+<<<<<<< HEAD
 /* autocmplete styles */
 
 .tt-query {
@@ -161,3 +168,53 @@ footer p {
 /* background-color: #434A54; */
  color:#434A54;
 }
+=======
+}
+
+
+
+.widget{
+    width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 1s;
+}
+
+
+
+.widget-content { 
+
+  
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+    backface-visibility: hidden;
+
+
+   
+}
+
+.widget-content.front {
+        
+
+}
+
+.widget-content.back {
+
+    -webkit-transform: rotateY(-180deg);
+
+}
+.flipped {
+
+  -webkit-transform: rotateY( -180deg );
+
+}
+
+#showcompare{
+  margin: 0 0 1.5% 0;
+  position: relative;
+  left: 50%;
+}
+>>>>>>> compareChart
