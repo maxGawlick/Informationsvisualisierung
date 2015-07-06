@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <title>Journal Explorer</title>
+    <style>
+
+
+    </style>
+  </head>
+
+  <body style="background-color: rgb(241, 242, 246);">
+      
+
+      <div>  
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+        </button>
+      <a class="navbar-brand" href="#">Journal Explorer</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Suche</a></li>
+        <li><a href="downloads.html">Vergleichen</a></li> 
+      </ul>
+        </div>
+    </div>
+  </nav>
+</div>
+
+      
+ 
+<div class="row cont">
+
+<!--    <nav class="">-->
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">Suche  |  <span id="nrOfJournals"></span> Zeitschriften</h3>
+            </div>
+            <div class="panel-body">
+                
+                  <p><b>Journal-Suche</b></p>
+                  <div id="the-basics">
+                    <input id="searchInput"class="typeahead form-control" type="text" placeholder="Titel">
+                  </div>
+                
+                 <br>
+                 <input id="issnInput" class="typeahead form-control" type="text" placeholder="ISSN">
+                
+                  <hr>
+                
+                  <button onClick="handleButtonClick();" id="searchbtn" typ="button" class="btn btn-default btn-block searchBtn">Suchen</button>
+                        
+            </div>
+        </div>
+    </div>
+<!--      </nav>-->
+    
+<!--    <article class="">-->
+    <div class="col-md-9">  
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Details</h3>
+        </div>
+        <div class="panel-body">
+           <div class="row">
+            <div class="col-md-4">
+                
+               <h4 id="journalTitle"class="text-center"></h4>
+               
+               <hr>
+                
+               <p id="journalPublisher" class="text-center bg-primary"></p>
+                
+               <hr>
+                
+               <p id="journalPlatform"class="text-center">Platform: Elsevier</p>
+                
+               <hr>
+                
+               <p id="journalPrintISSN"class="text-center">Print ISSN: 0239-2341</p>
+                
+               <hr>
+                
+               <p style="color:white;background-color:#434A54;"id="journalOnlineISSN"class="text-center lead">Online ISSN: 0239-2341</p>
+                
+               <hr>
+                
+                <a target="_blank" id="ezblink">EZB</a>
+               
+               
+            </div>
+            <div class="col-md-8">
+               <p></p>
+               
+            </div>
+           </div>
+            
+        </div>
+      </div>
+     </div> 
+<!--    </article>  /col-md-8 -->
+
+
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jsonsql.js"></script>
+    <script src="js/pase.js"></script>
+    <script src="js/typehead.js"></script>
+    <script src="js/getSearchData.js"></script>
+    <script src="js/initAutocomplete.js"></script>
+    
+
+  </body>
+</html>
