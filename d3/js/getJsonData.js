@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var publisher = {};
 var dataObject = {};
 var obj = {};

@@ -4,14 +4,7 @@ var montharray = [''];
 var testArray = ['200', '500', '800', '3000'];
 var largestArrayValue = null;
 var minArrayValue = null;
-var chart = radialBarChart()
-  .barHeight(250)
-  .reverseLayerOrder(true)
-  .capitalizeLabels(true)
-  .barColors(['#DA4453', '#AAB2BD '])
-  .domain([0,100]);
-//  .tickValues([20,40,60,80,100,120,140,160]);
-//  .tickCircleValues([100,200,300,400,500,600, 700]);
+
 var tickValuesCount = 8;
 var tickArray = new Array();
 
