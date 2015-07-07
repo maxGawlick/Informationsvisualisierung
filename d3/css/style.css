@@ -37,6 +37,18 @@ footer p {
 	font-size: 11px;
 }
 
+/*landing page jumbotron */
+.jumbo {
+ background-color:#ccc;
+    padding-right:60px;
+    padding-left:60px;
+    border-radius:6px;
+    padding-top:48px;
+    padding-bottom: 48px;
+    text-align: center;
+}
+
+
 /* Round Radial Chart styles */
 
 #chart {
@@ -200,4 +212,22 @@ footer p {
   line-height: 1;
   text-align: right;
   color: white;
+}
+
+#searchcont {
+ display:none;   
+}
+
+/* fix landing page search box */
+div#the-basics {
+ line-height:11px;
+ border-radius:6px;
+}
+
+.dl-horizontal dt {
+ width:125px;   
+}
+
+.dl-horizontal dd {
+ margin-left:170px;   
 }

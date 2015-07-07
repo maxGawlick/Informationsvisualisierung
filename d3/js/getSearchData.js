@@ -1,11 +1,14 @@
 var journalTitles = [''];
 var journalISSN = [''];
 var journalObjectComplete = [{}];
-var test = ['genesis', 'go'];
 var journalObjects;
 var ezbLinkFront = "http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=AAAAA&colors=7&lang=de&selected_colors%5B%5D=1&selected_colors%5B%5D=4&jq_type1=KT&jq_term1=&jq_bool2=AND&jq_type2=IS&jq_term2="
 var ezbLinkEnd = "&jq_bool3=AND&jq_type3=PU&jq_term3=&hits_per_page=50&search_journal=Suche+starten"
-
+var searchVal = "";
+var searchValLanding = "";
+var issnVal = "";
+var posInArray = 0;
+var issnInArray = 0;
 
 function initSearchData() {
     
@@ -26,6 +29,7 @@ function initSearchData() {
 
           
       }
+         
      }
 
        document.getElementById("nrOfJournals").innerHTML = journalTitles.length;  
@@ -40,31 +44,55 @@ function initSearchData() {
 /* HANDLE search button and update journal detail view */
 function handleButtonClick() {
     
-        var searchVal = $("#searchInput").val();
-        var issnVal = $("#issnInput").val();
-        var posInArray = jQuery.inArray(searchVal, journalTitles);
-        var issnInArray = jQuery.inArray(issnVal, journalISSN);
-        
-        document.getElementById("journalTitle").innerHTML = journalObjectComplete[posInArray]["Title"];
-        document.getElementById("journalPublisher").innerHTML = journalObjectComplete[posInArray]["Publisher"];
-        document.getElementById("ezblink").href= ezbLinkFront + journalObjectComplete[posInArray]["Online ISSN"]; 
+        searchVal = $("#searchInput").val();
+        issnVal = $("#issnInput").val();
+        posInArray = jQuery.inArray(searchVal, journalTitles);
+        issnInArray = jQuery.inArray(issnVal, journalISSN);
 
+        updateDetailView();
+        
+
+}
+
+function updateDetailView() {
+    /*check if title input is empty (undefined), if true set posInarray to value of issninarray */
+        if(! journalObjectComplete[posInArray]["Title"]) {
+         posInArray = issnInArray;   
+        }
+        document.getElementById("journalTitle").innerHTML = journalObjectComplete[posInArray]["Title"];
+        $('#journalPublisher').hide().html(journalObjectComplete[posInArray]["Publisher"]).fadeIn('slow');
+        $('#journalPlatform').hide().html(journalObjectComplete[posInArray]["Platform"]).fadeIn('slow');
+        $('#journalPrintISSN').hide().html(journalObjectComplete[posInArray]["Print ISSN"]).fadeIn('slow');
+        $('#journalOnlineISSN').hide().html(journalObjectComplete[posInArray]["Online ISSN"]).fadeIn('slow');
+        document.getElementById("ezblink").href= ezbLinkFront + journalObjectComplete[posInArray]["Online ISSN"]; 
+}
+
+function landingSearch() {
+    $("#jumbo").fadeToggle("slow", function(){
+       $("#searchcont").fadeToggle("slow"); 
+    });
+    
+    searchValLanding = $("#landingSearch").val();
+    $("#searchInput").val(searchValLanding);
+    posInArray = jQuery.inArray(searchValLanding, journalTitles);
+    updateDetailView();
 }
 
 /* detect loading states and update UI */
 $(document).ready(function(){
     
     
-    
-    
 //    Pace.on("start", function(){
         
 //    });
+   
     
-    
-    
+    /* enable search fields when date has finishes loading */
     Pace.on("done", function(){
         console.log("DONE");
+          $("#landingSearch").removeAttr('disabled');
+          $("#landingSearchbtn").removeAttr('disabled');
+          document.getElementById("landingSearch").focus();
     });
     
 });
