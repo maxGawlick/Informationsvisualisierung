@@ -4,7 +4,6 @@ var montharray = [''];
 var testArray = ['200', '500', '800', '3000'];
 var largestArrayValue = null;
 var minArrayValue = null;
-var items = null;
 var chart = radialBarChart()
   .barHeight(250)
   .reverseLayerOrder(true)
@@ -19,7 +18,6 @@ var tickArray = new Array();
 /* get needed values from 'annual' and fill them in chart-data-objcect, draw chart*/
 function getDataAndChart(annual) {
     
-    console.log("getDataAndChart called");
     
     montharray[0] = parseInt(annual["Jan " + getSelectedYearShort()]);
     montharray[1] = parseInt(annual["Feb " + getSelectedYearShort()]);
@@ -64,8 +62,6 @@ function assignChartDomain(largestValue) {
     /* use prior filled array to display tickValues on the chart accordingly */
     chart.tickValues(assignChartTicks);
     
-    console.log("assignChart Domain called")
-    
 }
 
 function assignChartTicks() {
@@ -77,7 +73,6 @@ function assignChartTicks() {
     for(var i = 1; i <= tickValuesCount; i++) {  
       tickArray.push(Math.round(largestArrayValue*(i/8)));
     }
-    console.log("assignChart ticks called")
     
     return tickArray;
 }
@@ -97,6 +92,7 @@ function drawChart() {
 
 /* return value of selected radiobox */
 function getPublisherRadio() {
+
     var selectedPublisher = [];
     items = $("input[name=verlagradio]:checked");
     for(var i = 0; i< items.length; i++){

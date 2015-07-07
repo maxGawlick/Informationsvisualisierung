@@ -40,3 +40,13 @@ $('#the-basics .typeahead').typeahead({
   name: 'states',
   source: substringMatcher(initSearchData())
 });
+
+$('#the-basics2 .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  source: substringMatcher(initSearchData())
+});

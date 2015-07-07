@@ -7,6 +7,7 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
     <link href="css/c3.min.css" rel="stylesheet" type="text/css">
+
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <title>Journal Explorer</title>
     <style>
@@ -18,7 +19,9 @@
   <body style="background-color: rgb(241, 242, 246);">
       
 
- <div>  
+
+      <div>  
+
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -39,6 +42,7 @@
     </div>
   </nav>
 </div>
+      
 
 <div class="row cont">
 
@@ -51,6 +55,7 @@
             <div class="panel-body">
                 <h5>Jahr wählen:</h5>
                 
+
                 <select multiple class="form-control" id="yearselect" >
                     <option value="2003" selected>2003</option>
                     <option value="2004">2004</option>
@@ -77,6 +82,7 @@
                                 </label>
                             </div>
                             
+
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" id="elsevier" name="verlagradio" id="elsevierRadio" value="Elsevier">
@@ -90,7 +96,7 @@
                                     Springer
                                 </label>
                             </div>
-                            
+        
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="verlagradio" id="wileyRadio" value="Wiley">
@@ -112,13 +118,13 @@
                 <button id="transformDonut" class="btn btn-default" onClick="transformDonut();">Donut Chart</button>
                 <button id="transformDonut" class="btn btn-default" onClick="transformScatter();">Scatter Chart</button>
                 <button id="transformDonut" class="btn btn-default" onClick="transformAreaSpline();">Spline Chart</button>
-
             </div>
         </div>
     </div>
 <!--      </nav>-->
     
 <!--    <article class="">-->
+
 
     <div class="col-md-9">  
 
@@ -152,7 +158,6 @@
 
      </div> 
     </div>
-   
 <!--    </article>  /col-md-8 -->
 
 
@@ -163,7 +168,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/c3.min.js"></script>
-    <script src="js/radialBarChart.js"></script>
+    <script src="js/d3.v3.min.js"></script>
     <script src="js/jsonsql.js"></script>
     <script src="js/chartconfig.js"></script>
     <script src="js/getJsonData.js"></script>
