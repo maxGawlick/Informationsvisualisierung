@@ -1,64 +1,209 @@
+var Chart = (function(){
+    
+var that = {};
 var lineChart;
 var publisherDataJson;
-var data;
-
-
-
-function generateCompareChart(data){
-    console.log("data: ", data);
+var data = {};
+var selected = [];
+var years = ["2003"];
+var selectedPublisher = [],
+    
+generate = function(data){
     this.data = data;
-    publisherDataJson = JSON.stringify(data);
-    console.log(publisherDataJson);
     lineChart = c3.generate({
         bindto: "#chart2",
-        data: {
-            json: data
+        data:{
+            columns:[
+                data            
+            ]
         },
+            axis: {
+                x:{
+                    type: 'category',
+                    categories: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
+                }
+            }
+                    
+    });
+    
+    
+},
+    
+
+
+getData = function(){
+    return data;
+},
+
+setData = function(obj){
+    data = obj;
+},
+
+displayData = function(years, allPublisher){    
+    
+    for(var y in years){
+        for(var p in allPublisher){
+            var obj = data[years[y]][allPublisher[p]];
+//            console.log(obj);
+            if(!(obj == null)){
+                addData(obj);                   
+            }                             
+            
+        }
+    }
+    
+    hideData();
+    
+},
+    
+hideData = function(){
+    lineChart.hide('',{withLegend: true});
+},
+    
+showData = function(allYears, selectedPublisher, years){
+    
+    console.log("showdata.............");
+    console.log(years);
+    console.log(selectedPublisher);
+    console.log(data);
+    var allYears = allYears;
+    console.log(allYears);
+    
+            for(var selectedYear in years){
+                    for(var publisher in selectedPublisher){
+                        lineChart.show(selectedPublisher[publisher] + " " + years[selectedYear], {withLegend: true});
+                    }
+                var index = allYears.indexOf(years[selectedYear]);
+                allYears.splice(index,1);
+                //console.log(allYears);
+                       
+            }
+        
+            for(var i = 0; i< allYears.length; i++){
+                for(var j=0; j<selectedPublisher.length; j++){
+                    //console.log(allYears);
+                        lineChart.hide(selectedPublisher[j] + " "+ allYears[i],{withLegend: true});                    
+                }
+            }
+                
+},
+    
+toggleData = function(publisher, years){
+    
+    console.log(publisher);
+    console.log(years);
+    for(var p in publisher){
+        for(var y in years){
+            lineChart.toggle(''+ publisher[p] + " " + years[y], {withLegend: true});
+        }
+            
+    }
+},
+
+addData = function(obj, cat){
+    lineChart.load({
+        columns:[
+            obj            
+        ]
+        ,
         axis: {
             x:{
                 type: 'category',
                 categories: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
             }
-        }
+        },
     });
     
-
-}
-
-function addData(){
-    lineChart.load({
-        columns:[
-            publisherDataJson
-        ]
-    });
-}
-function removeData(){
+    
+},
+removeData = function(){
     lineChart.unload({
         ids: 'Verlag3'
     });
-}
-function transformBar(){
+},
+
+getDataFromChart = function(){
+    return data;
+},
+transformBar =function(){
     lineChart.transform('bar');
     
-}
-function transformLine(){
+},
+transformLine = function(){
     lineChart.transform('line');
     
-}
-function transformDonut(){
+},
+transformDonut = function(){
     lineChart.transform('donut');
     
-}
-$(document).ready(function(){
-    $(':checkbox').change(function(){
-        console.log($(this).val());
-        if($(this).val() in data){
-            console.log("true");
-            lineChart.toggle($(this).val(),{withLegend: true});
+},
+
+transformScatter = function(){
+    lineChart.transform('scatter');
+},
+
+transformAreaSpline = function(){
+    lineChart.transform('area-spline');
+},
+
+getSelected = function(){
+    return selected;
+},
+getSelectedYears = function(){
+   return $('#yearselect').val();
+},
+
+publisherSelectorOnChange = function(year, box){   
+    var $box = box;
+    var publisherYears = [];
+        for(var i =0; i< year.length; i++){
+            if($box.val()+ " "+ year[i] in data){
+                lineChart.toggle($box.val()+ " "+ year[i],{withLegend: true});
+
+            }else{
+                publisherYears.push(year[i]);
+            }
             
-        }else{
-            console.log("false");
-            getLineChartData();
         }
-    })
-})
+        if(!(publisherYears == null)){
+            getLineChartData(publisherYears);
+        }
+    
+},
+
+yearSelectorOnChange = function(allYears, selectedPublisher, years){
+           
+        
+            for(var selectedYear in years){
+                    for(var publisher in selectedPublisher){
+                        if(selectedPublisher[publisher] + " "+years[selectedYear] in data){
+                            var index = allYears.indexOf(years[selectedYear]);
+                            allYears.splice(index,1);
+                            lineChart.show(selectedPublisher[publisher] + " "+ years[selectedYear],{withLegend: true});
+                            
+                        }
+                    }
+                       
+            }
+        
+            for(var i = 0; i< allYears.length; i++){
+                for(var j=0; j<selectedPublisher.length; j++){
+                    if(selectedPublisher[j] + " "+ allYears[i] in data){
+                        lineChart.hide(selectedPublisher[j] + " "+ allYears[i],{withLegend: true});
+                    }
+                }
+            }
+                
+     
+}
+    that.showData = showData;
+    that.getSelectedYears = getSelectedYears;
+    that.toggleData = toggleData;
+    that.hideData = hideData;
+    that.generate = generate;
+    that.displayData = displayData;
+    that.setData = setData;
+    
+    return that;
+    
+})();
