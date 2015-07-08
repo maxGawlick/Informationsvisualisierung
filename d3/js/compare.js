@@ -22,7 +22,10 @@ generate = function(data){
                     type: 'category',
                     categories: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
                 }
-            }
+            },
+        zoom: {
+            enabled: true
+        }
                     
     });
     
@@ -196,6 +199,8 @@ yearSelectorOnChange = function(allYears, selectedPublisher, years){
                 
      
 }
+
+    that.transformDonut = transformDonut;
     that.showData = showData;
     that.getSelectedYears = getSelectedYears;
     that.toggleData = toggleData;

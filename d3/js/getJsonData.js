@@ -102,6 +102,7 @@ function getAllData(){
                 
                  size = Object.size(entry);
                 if(size > 11){
+                    console.log("data: ", entry);
                     data = appendChartTag(entry);
                     Chart.setData(data);
                     Chart.displayData(getYears(), getPublisher());
@@ -160,7 +161,7 @@ function getJSON(callback){
                          totalDownloads = jsonsql.query(query, json);
 //                        console.log(totalDownloads);
                         dataObject = createDataObject(totalDownloads, year);
-                      //  console.log(dataObject);
+                        console.log("dataobject", dataObject);
                         
                         
                         
