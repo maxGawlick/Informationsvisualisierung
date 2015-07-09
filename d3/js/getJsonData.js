@@ -122,6 +122,8 @@ function appendChartTag(arg, publisher, year){
     
         var x = arg;
         x.unshift(publisher + " " + year);
+    
+    return x;
 }
 
 
