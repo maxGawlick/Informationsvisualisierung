@@ -96,6 +96,8 @@ function getAllData(){
     var size;
     
     getDataFromView();
+    
+    console.log("data",Chart.data);
     getJSON(function(json){
         if(json instanceof Array) {
             $(json).each(function(idx, entry) {
