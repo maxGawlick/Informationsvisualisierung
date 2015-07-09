@@ -104,6 +104,8 @@ toggleData = function(publisher, years){
 },
 
 addData = function(obj, cat){
+//    console.log(obj);
+    
     lineChart.load({
         columns:[
             obj            
@@ -156,6 +158,25 @@ getSelectedYears = function(){
    return $('#yearselect').val();
 },
 
+activateRegions = function(){
+  lineChart.regions([
+      {axis: "x",start: "1", end: "2.5", class: "region1"},
+      {axis: "x",start: "5.5", end: "7", class: "region2"},
+      {axis: "x",start: "9", end: "10", class: "region3"}
+   ]);
+},
+    
+toggleRegions = function(){
+    if(!($('#semesterRadio').is(':checked'))){
+        console.log("if");
+        $('.c3-region').css('display', 'none');
+    }else{
+    console.log("else");
+        $('.c3-region').css('display', 'block');
+        
+    }
+},
+
 publisherSelectorOnChange = function(year, box){   
     var $box = box;
     var publisherYears = [];
@@ -199,7 +220,11 @@ yearSelectorOnChange = function(allYears, selectedPublisher, years){
                 
      
 }
-
+    that.toggleRegions = toggleRegions;
+    that.activateRegions = activateRegions;
+    that.transformBar = transformBar;
+    that.transformAreaSpline = transformAreaSpline;
+    that.transformLine = transformLine;
     that.transformDonut = transformDonut;
     that.showData = showData;
     that.getSelectedYears = getSelectedYears;
