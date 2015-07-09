@@ -155,7 +155,9 @@ function landingSearch() {
     searchValLanding = $("#landingSearch").val();
     $("#searchInput").val(searchValLanding);
     posInArray = jQuery.inArray(searchValLanding, journalTitles);
+    console.log("CHART------------", Chart.data);
     updateDetailView(searchValLanding);
+    
 }
 
 /* detect loading states and update UI */

@@ -10,6 +10,7 @@ var Chart = (function () {
 
         //generate lineChart
         generate = function () {
+            console.log("generate");
             lineChart = c3.generate({
                 bindto: "#chart2",
                 data: {
@@ -36,9 +37,11 @@ var Chart = (function () {
         },
         //add data to Chart and hides it
         displayData = function (years, allPublisher) {
+            console.log("displayData", data);
             for (var y in years) {
                 for (var p in allPublisher) {
                     var obj = data[years[y]][allPublisher[p]];
+                    console.log("obj", obj);
                     if (!(obj == null)) {
                         addData(obj);
                     }

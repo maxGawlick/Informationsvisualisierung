@@ -15,6 +15,7 @@ function getAllData() {
                 if (size > 11) {
                     data = entry;
                     Chart.setData(data);
+                    Chart.data= data;
                 }
             });
         } else {
@@ -22,6 +23,7 @@ function getAllData() {
             if (size > 11) {
                 data = json;
                 Chart.setData(data);
+                Chart.data = data;
             }
         }
     });
