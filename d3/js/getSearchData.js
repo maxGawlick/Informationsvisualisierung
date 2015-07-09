@@ -3,6 +3,7 @@ var journalTitles = [''];
 var journalISSN = [''];
 var journalObjectComplete = [{}];
 var journalObjects;
+var journalDetailObject;
 var ezbLinkFront = "http://rzblx1.uni-regensburg.de/ezeit/searchres.phtml?bibid=AAAAA&colors=7&lang=de&selected_colors%5B%5D=1&selected_colors%5B%5D=4&jq_type1=KT&jq_term1=&jq_bool2=AND&jq_type2=IS&jq_term2="
 var ezbLinkEnd = "&jq_bool3=AND&jq_type3=PU&jq_term3=&hits_per_page=50&search_journal=Suche+starten"
 var searchVal = "";
@@ -10,10 +11,11 @@ var searchValLanding = "";
 var issnVal = "";
 var posInArray = 0;
 var issnInArray = 0;
+var ko = 0;
 
 function initSearchData() {
     
-     for(var year = 2003; year <= 2010; year++) {
+     for(var year = 2003; year <= 2014; year++) {
      $.getJSON("./data/merge" + year + ".json", function(json){
          
      journals = "select * from json.journals where (Title!=='Total for all journals')";
@@ -66,6 +68,72 @@ function updateDetailView() {
         $('#journalPrintISSN').hide().html(journalObjectComplete[posInArray]["Print ISSN"]).fadeIn('slow');
         $('#journalOnlineISSN').hide().html(journalObjectComplete[posInArray]["Online ISSN"]).fadeIn('slow');
         document.getElementById("ezblink").href= ezbLinkFront + journalObjectComplete[posInArray]["Online ISSN"]; 
+        
+        getSelectedJournalData();
+        drawDetailGraph();
+}
+
+function getSelectedJournalData() {
+    
+    currentJournal = journalObjectComplete[posInArray]["Online ISSN"];
+    var array = [];
+    var years = [2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014]
+    $(years).each(function(index, year){
+     $.getJSON("./data/merge" + year + ".json", function(json){
+         
+     journalDetail = "select * from json.journals where (Title=='' + searchValLanding)";
+     
+     journalDetailObjects = jsonsql.query(journalDetail, json);
+         
+         array = createSearchDataObject(journalDetailObjects, ""+year);
+//         console.log(array);
+         
+         if(Object.size(array) > 11){
+            console.log("load");
+             console.log(Object.size(array));
+            setData(array);
+             loadData(array);
+        }
+         
+
+     });
+        
+        
+        
+     });
+    
+}
+
+function createSearchDataObject(totalDownloadsPerYear, year){
+   
+    var downloadsPerJournal = totalDownloadsPerYear;
+    obj['' + year] = {};
+//    console.log(obj);
+    for(var i = 0; i< totalDownloadsPerYear.length; i++){
+        obj[year] = getDownloadsForJournal(year, downloadsPerJournal[i], downloadsPerJournal[i].Title);
+    }
+    return obj;
+}
+
+function getDownloadsForJournal(year, totalDownloads, titel){
+    
+    var downloads = [];
+        downloads.push(totalDownloads['Jan '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Feb '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Mar-' + year]);
+        downloads.push(totalDownloads['Apr '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['May-'+ year]);
+        downloads.push(totalDownloads['Juni '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Juli '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Aug '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Sep '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Oct-'+ year]);
+        downloads.push(totalDownloads['Nov '+ year.substring(2,4)]);
+        downloads.push(totalDownloads['Dec-' + year]);
+    
+//    downloads.unshift(titel +" " + year);
+    
+    return downloads;
 }
 
 function landingSearch() {
@@ -90,7 +158,7 @@ $(document).ready(function(){
     
     /* enable search fields when date has finishes loading */
     Pace.on("done", function(){
-        console.log("DONE");
+//        console.log("DONE");
           $("#landingSearch").removeAttr('disabled');
           $("#landingSearchbtn").removeAttr('disabled');
           document.getElementById("landingSearch").focus();

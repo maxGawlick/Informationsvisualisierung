@@ -104,8 +104,6 @@ toggleData = function(publisher, years){
 },
 
 addData = function(obj, cat){
-//    console.log(obj);
-    
     lineChart.load({
         columns:[
             obj            
@@ -175,50 +173,6 @@ toggleRegions = function(){
         $('.c3-region').css('display', 'block');
         
     }
-},
-
-publisherSelectorOnChange = function(year, box){   
-    var $box = box;
-    var publisherYears = [];
-        for(var i =0; i< year.length; i++){
-            if($box.val()+ " "+ year[i] in data){
-                lineChart.toggle($box.val()+ " "+ year[i],{withLegend: true});
-
-            }else{
-                publisherYears.push(year[i]);
-            }
-            
-        }
-        if(!(publisherYears == null)){
-            getLineChartData(publisherYears);
-        }
-    
-},
-
-yearSelectorOnChange = function(allYears, selectedPublisher, years){
-           
-        
-            for(var selectedYear in years){
-                    for(var publisher in selectedPublisher){
-                        if(selectedPublisher[publisher] + " "+years[selectedYear] in data){
-                            var index = allYears.indexOf(years[selectedYear]);
-                            allYears.splice(index,1);
-                            lineChart.show(selectedPublisher[publisher] + " "+ years[selectedYear],{withLegend: true});
-                            
-                        }
-                    }
-                       
-            }
-        
-            for(var i = 0; i< allYears.length; i++){
-                for(var j=0; j<selectedPublisher.length; j++){
-                    if(selectedPublisher[j] + " "+ allYears[i] in data){
-                        lineChart.hide(selectedPublisher[j] + " "+ allYears[i],{withLegend: true});
-                    }
-                }
-            }
-                
-     
 }
     that.toggleRegions = toggleRegions;
     that.activateRegions = activateRegions;
