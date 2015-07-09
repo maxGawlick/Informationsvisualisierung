@@ -6,6 +6,7 @@
     
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
+    <link href="css/c3.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <title>Journal Explorer</title>
     <style>
@@ -16,6 +17,7 @@
 
   <body style="background-color: rgb(241, 242, 246);">
       
+
 
 <div>  
   <nav class="navbar navbar-inverse" role="navigation">
@@ -31,16 +33,21 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Suche</a></li>
-            <li><a href="downloads.html">Vergleichen</a></li>
-        </ul>
-      </div>
-        <div style="padding-right:110px;">
+        <li class="active"><a href="#">Suche</a></li>
+        <li><a href="downloads.html">Vergleichen</a></li> 
+      </ul>
+          <div style="padding-right:110px;">
         <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary navbar-btn pull-right">Info</button>
         </div>
         </div>
+    </div>
   </nav>
 </div>
+
+ 
+ 
+<div class="row cont">
+
       
 <!-- MODAL -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -54,41 +61,37 @@
       </div>
         <hr>
       <div class="modal-body">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Info</h3>
-            </div>
-            <div class="panel-body">
-                <p>"Journal Explorer" ist eine Webanwendung, welche dazu dient </p>
-            </div>
-        </div>
           
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Datensatz</h3>
             </div>
             <div class="panel-body">
                 <p>Die verwendeten Datensätze gliedern sich in 4 Verläge:</p>
                 <ul>
-                <li>Annual Reviews</li>
-                <li>Elsevier</li>
-                <li>Springer</li>
-                <li>Wiley</li>
+                <li>Annual Reviews / ~50 Items</li>
+                <li>Elsevier / ~2000 Items</li>
+                <li>Springer / ~2000 Items</li>
+                <li>Wiley / ~2000 Items</li>
                 </ul>
-                <br>
-                <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 größtenteils vor </p>
-                </ul>
+                
+                <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 vor (mit Lücken). </p>
+                <p>Die (43) Dateien lagen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
             </div>
         </div>
           
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Info</h3>
+                <h3 class="panel-title">Zeitschriften</h3>
             </div>
             <div class="panel-body">
-                <p>"Journal Explorer" ist eine Webanwendung, welche dazu dient </p>
+                <p>Insgesamt gibts es ca. 8000 einzelne Zeitschriften</p>
+                <p><strong>Einzelansicht:</strong></p>
+                <img alt="Einzelansicht Journal" src="jour.png"> 
             </div>
         </div>
+
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
@@ -132,10 +135,12 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Suche  |  <span id="nrOfJournals"></span> Zeitschriften</h3>
+
             </div>
             <div class="panel-body">
                 
                   <p><b>Journal-Suche</b></p>
+
                   <div id="the-basics2">
                     <input id="searchInput"class="typeahead form-control" type="text" placeholder="Titel">
                   </div>
@@ -154,7 +159,9 @@
     
 <!--    <article class="">-->
     <div class="col-md-9">  
+
       <div class="panel panel-primary">
+
         <div class="panel-heading">
             <h3 class="panel-title">Details</h3>
         </div>
@@ -181,7 +188,7 @@
                 
                <hr>
                 
-<!--               <p id="journalPrintISSN"class="text-center"><kbd>Print ISSN: 0239-2341</kbd></p>-->
+
                 <dl class="dl-horizontal">
                     <dt>Print ISSN</dt>
                         <dd id="journalPrintISSN"></dd>
@@ -201,31 +208,35 @@
                     <dt>Link</dt>
                         <dd id="journalLink"><a target="_blank" id="ezblink">EZB</a></dd>
                 </dl>
+
                
                
             </div>
-            <div class="col-md-8">
-               <p></p>
                
+            <div class="col-md-8">
+
+               <div id="journalChart"></div> 
             </div>
            </div>
             
         </div>
       </div>
      </div> 
-<!--    </article>  /col-md-8 -->
 
 
     </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jsonsql.js"></script>
-    
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/c3.min.js"></script>
+    <script src="js/initSearchC3.js"></script>
+    <script src="js/jsonsql.js"></script>    
     <script src="js/pase.js"></script>
     <script src="js/typehead.js"></script>
     <script src="js/getSearchData.js"></script>
     <script src="js/initAutocomplete.js"></script>
+    <script src="js/getJsonData.js"></script>
     
 
   </body>

@@ -25,6 +25,7 @@ var jsonsql = {
 
 		var returnfields = sql.match(/^(select)\s+([a-z0-9_\,\.\s\*]+)\s+from\s+([a-z0-9_\.]+)(?: where\s+\((.+)\))?\s*(?:order\sby\s+([a-z0-9_\,]+))?\s*(asc|desc|ascnum|descnum)?\s*(?:limit\s+([0-9_\,]+))?/i);
 		
+        
 		var ops = { 
 			fields: returnfields[2].replace(' ','').split(','), 
 			from: returnfields[3].replace(' ',''), 
@@ -40,12 +41,13 @@ var jsonsql = {
 	parse: function(json,ops){
 		var o = { fields:["*"], from:"json", where:"", orderby:[], order: "asc", limit:[] };
 		for(i in ops) o[i] = ops[i];
-
+        
 		var result = [];		
 		result = this.returnFilter(json,o);
 		result = this.returnOrderBy(result,o.orderby,o.order);
 		result = this.returnLimit(result,o.limit);
-				
+			
+        
 		return result;
 	},
 	
@@ -65,7 +67,6 @@ var jsonsql = {
 				}
 			}
 		}
-		
 		return jsonsql_result;
 	},
 	

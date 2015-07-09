@@ -4,14 +4,7 @@ var montharray = [''];
 var testArray = ['200', '500', '800', '3000'];
 var largestArrayValue = null;
 var minArrayValue = null;
-var chart = radialBarChart()
-  .barHeight(250)
-  .reverseLayerOrder(true)
-  .capitalizeLabels(true)
-  .barColors(['#DA4453', '#AAB2BD '])
-  .domain([0,100]);
-//  .tickValues([20,40,60,80,100,120,140,160]);
-//  .tickCircleValues([100,200,300,400,500,600, 700]);
+
 var tickValuesCount = 8;
 var tickArray = new Array();
 
@@ -92,8 +85,31 @@ function drawChart() {
 
 /* return value of selected radiobox */
 function getPublisherRadio() {
-  return $("input[name=verlagradio]:checked").val(); 
+
+    var selectedPublisher = [];
+    items = $("input[name=verlagradio]:checked");
+    for(var i = 0; i< items.length; i++){
+       
+            selectedPublisher.push($(items[i]).val());
+        
+        
+    }
+    return selectedPublisher;
     
+}
+
+function createQuery(){
+    
+    var selectedPublisher = getPublisherRadio();
+    queryString = "";
+    for(var publisher in selectedPublisher){
+        if(selectedPublisher.length == 1 || publisher == 0){
+                queryString = queryString + "Publisher=='" + selectedPublisher[publisher] + "' ";
+        }else if(selectedPublisher.length > 1 ){
+                queryString = queryString + " || Publisher=='" + selectedPublisher[publisher] + "' ";
+        }
+    }
+  return queryString; 
 }
 
 function getSelectedYearFull() {
