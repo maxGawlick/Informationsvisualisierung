@@ -231,3 +231,10 @@ div#the-basics {
 .dl-horizontal dd {
  margin-left:170px;   
 }
+#chartButtons{
+  margin: 1%;
+  text-align: center;
+}
+.hidden{
+    display: none;
+}

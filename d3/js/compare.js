@@ -22,7 +22,10 @@ generate = function(data){
                     type: 'category',
                     categories: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
                 }
-            }
+            },
+        zoom: {
+            enabled: true
+        }
                     
     });
     
@@ -153,49 +156,30 @@ getSelectedYears = function(){
    return $('#yearselect').val();
 },
 
-publisherSelectorOnChange = function(year, box){   
-    var $box = box;
-    var publisherYears = [];
-        for(var i =0; i< year.length; i++){
-            if($box.val()+ " "+ year[i] in data){
-                lineChart.toggle($box.val()+ " "+ year[i],{withLegend: true});
-
-            }else{
-                publisherYears.push(year[i]);
-            }
-            
-        }
-        if(!(publisherYears == null)){
-            getLineChartData(publisherYears);
-        }
-    
+activateRegions = function(){
+  lineChart.regions([
+      {axis: "x",start: "1", end: "2.5", class: "region1"},
+      {axis: "x",start: "5.5", end: "7", class: "region2"},
+      {axis: "x",start: "9", end: "10", class: "region3"}
+   ]);
 },
-
-yearSelectorOnChange = function(allYears, selectedPublisher, years){
-           
+    
+toggleRegions = function(){
+    if(!($('#semesterRadio').is(':checked'))){
+        console.log("if");
+        $('.c3-region').css('display', 'none');
+    }else{
+    console.log("else");
+        $('.c3-region').css('display', 'block');
         
-            for(var selectedYear in years){
-                    for(var publisher in selectedPublisher){
-                        if(selectedPublisher[publisher] + " "+years[selectedYear] in data){
-                            var index = allYears.indexOf(years[selectedYear]);
-                            allYears.splice(index,1);
-                            lineChart.show(selectedPublisher[publisher] + " "+ years[selectedYear],{withLegend: true});
-                            
-                        }
-                    }
-                       
-            }
-        
-            for(var i = 0; i< allYears.length; i++){
-                for(var j=0; j<selectedPublisher.length; j++){
-                    if(selectedPublisher[j] + " "+ allYears[i] in data){
-                        lineChart.hide(selectedPublisher[j] + " "+ allYears[i],{withLegend: true});
-                    }
-                }
-            }
-                
-     
+    }
 }
+    that.toggleRegions = toggleRegions;
+    that.activateRegions = activateRegions;
+    that.transformBar = transformBar;
+    that.transformAreaSpline = transformAreaSpline;
+    that.transformLine = transformLine;
+    that.transformDonut = transformDonut;
     that.showData = showData;
     that.getSelectedYears = getSelectedYears;
     that.toggleData = toggleData;

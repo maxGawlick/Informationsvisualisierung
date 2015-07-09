@@ -44,7 +44,6 @@ function getLineChartData(selected){
                            Chart.generate(publisher);
 
         });
-        
     }else{
         
         $(selected).each(function(index, selected){
@@ -102,37 +101,30 @@ function getAllData(){
                 
                  size = Object.size(entry);
                 if(size > 11){
-                    data = appendChartTag(entry);
+                    console.log("if");
+                    data = entry;
+                    Chart.data = data;
                     Chart.setData(data);
-                    Chart.displayData(getYears(), getPublisher());
+//                    Chart.displayData(getYears(), getPublisher());
                 }
             });
         }else{
             
          size = Object.size(json);
         if(size > 11){
-            data = appendChartTag(json);
+           data = json;
             Chart.setData(data);
-            Chart.displayData(getYears(), getPublisher());
+//            Chart.displayData(getYears(), getPublisher());
         }
         }
     });
 }
 
-function appendChartTag(x){
+function appendChartTag(arg, publisher, year){
+//        console.log("charttag", arg);
+        var x = arg;
+        x.unshift(publisher + " " + year);
     
-    var publisher = getPublisher();
-    var years = getYears();
-     for(var y in years){
-        for(var p in publisher ){
-          //  console.log(obj);
-            if(!(x[years[y]][publisher[p]] == null)){
-                x[years[y]][publisher[p]].splice(0,1,publisher[p] + " " + years[y]);                      
-            }          
-            
-                
-        }
-    }
     return x;
 }
 
@@ -140,6 +132,7 @@ function appendChartTag(x){
 function update(){
     
     Chart.toggleData(getPublisherRadio(), Chart.getSelectedYears());
+    Chart.activateRegions();
     
     
 }
@@ -154,13 +147,12 @@ function getJSON(callback){
     
     $(allYears).each(function(index, year){
          promise = $.getJSON("./data/merge" + year + ".json").pipe(function(json){
-
                          query = "select * from json.journals where (Title=='Total for all journals')";
 
                          totalDownloads = jsonsql.query(query, json);
-//                        console.log(totalDownloads);
+                        console.log("totaldownloads",totalDownloads);
                         dataObject = createDataObject(totalDownloads, year);
-                      //  console.log(dataObject);
+                        console.log("dataObject",dataObject);
                         
                         
                         
@@ -168,31 +160,10 @@ function getJSON(callback){
                         return dataObject;
                   
                     });
-            
-                   /* $.getJSON("./data/merge" + year + ".json", function(json){
-
-                         query = "select * from json.journals where (Title=='Total for all journals')";
-
-                         totalDownloads = jsonsql.query(query, json);
-//                        console.log(totalDownloads);
-                        dataObject = createDataObject(totalDownloads, year);
-                      //  console.log(dataObject);
-                        
-                        
-                        
-                        //callback(dataObject);
-                        deferred.resolve(dataObject);
-                  
-                    });*/
-        
             promises.push(promise);
         });
     
-    /*$.when(promises).then(function() {
-       var args = arguments; 
-        console.log('resolved args', args);
-    });*/
-    
+    console.log(promises);
     $.when.apply($, promises).done(function() {
        var args = arguments; 
         console.log('resolved args', args);
@@ -208,19 +179,18 @@ function getDataObject(){
 function createDataObject(totalDownloadsPerYear, year){
    
     var downloadsPerPublisher = totalDownloadsPerYear;
-//    console.log(totalDownloadsPerYear);
-//    console.log(obj);
-//    console.log("year----------------");
-//    console.log(year);
     obj['' + year] = {};
-//    console.log(obj);
     for(var i = 0; i< totalDownloadsPerYear.length; i++){
-        obj[year]['' + totalDownloadsPerYear[i].Publisher] = getDownloadsForPublisher(year, totalDownloadsPerYear[i]);
+        obj[year]['' + totalDownloadsPerYear[i].Publisher] = getDownloadsForPublisher(year, downloadsPerPublisher[i], totalDownloadsPerYear[i].Publisher);
+//        console.log("dmg:", getDownloadsForPublisher(year, downloadsPerPublisher[i]));
+//        console.log("obj", obj);
     }
     return obj;
 }
 
-function getDownloadsForPublisher(year, totalDownloads){
+function getDownloadsForPublisher(year, totalDownloads, publisher){
+    
+    console.log("wasd", totalDownloads);
     
     var downloads = [];
         downloads.push(totalDownloads['Jan '+ year.substring(2,4)]);
@@ -235,12 +205,13 @@ function getDownloadsForPublisher(year, totalDownloads){
         downloads.push(totalDownloads['Oct-'+ year]);
         downloads.push(totalDownloads['Nov '+ year.substring(2,4)]);
         downloads.push(totalDownloads['Dec-' + year]);
+    console.log("asdasd: ", downloads);
     
-    return downloads;
+    return appendChartTag(downloads, publisher, year);
 }
 function getDataFromView(){
-    allYears = getYears();
-    allPublisher = getPublisher();
+    allYears = ["2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"];
+    allPublisher = ["Annual Reviews", "Elsevier", "Springer", "Wiley"];
 }
 
 function getYears(){    
@@ -260,12 +231,6 @@ function getPublisher(){
 }
     
     
-
-
-//$(document).ready(function(){
-//    getLineChartData();
-//})
-
 Object.size = function(obj){
     var size = 0, key;
     for(key in obj){
