@@ -178,17 +178,20 @@
 <!--    </article>  /col-md-8 -->
 
 
+<!--
 
     <script src="js/jquery.min.js"></script>
     <script src="js/lodash.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/c3.min.js"></script>
-<!--    <script src="js/d3.v3.min.js"></script>-->
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/mustache.js"></script>
     <script src="js/jsonsql.js"></script>
     <script src="js/chartconfig.js"></script>
     <script src="js/getJsonData.js"></script>
     <script src="js/compare.js"></script>
+-->
     <script>
 
         $(document).ready(function(){
@@ -236,8 +239,10 @@
 
 
             })
-            Chart.generate({});
-            getAllData();
+            Chart.generate();
+                Chart.displayData(getYears(), getPublisher());
+                update();
+            //getAllData();
             
         })
     </script>

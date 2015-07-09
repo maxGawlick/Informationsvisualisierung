@@ -8,8 +8,7 @@ var selected = [];
 var years = ["2003"];
 var selectedPublisher = [],
     
-generate = function(data){
-    this.data = data;
+generate = function(){
     lineChart = c3.generate({
         bindto: "#chart2",
         data:{

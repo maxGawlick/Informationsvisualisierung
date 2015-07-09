@@ -2,6 +2,7 @@ var publisher = {};
 var dataObject = {};
 var obj = {};
 var allYears = [];
+var allPublisher = [];
 
 
 
@@ -95,6 +96,8 @@ function getAllData(){
     var size;
     
     getDataFromView();
+    
+    console.log("data",Chart.data);
     getJSON(function(json){
         if(json instanceof Array) {
             $(json).each(function(idx, entry) {
@@ -103,7 +106,8 @@ function getAllData(){
                 if(size > 11){
                     data = entry;
                     Chart.setData(data);
-                    Chart.displayData(getYears(), getPublisher());
+                    Chart.data = data;
+//                    Chart.displayData(getYears(), getPublisher());
                 }
             });
         }else{
@@ -112,7 +116,8 @@ function getAllData(){
         if(size > 11){
            data = json;
             Chart.setData(data);
-            Chart.displayData(getYears(), getPublisher());
+                    Chart.data = data;
+//            Chart.displayData(getYears(), getPublisher());
         }
         }
     });
@@ -206,8 +211,10 @@ function getDownloadsForPublisher(year, totalDownloads, publisher){
     return appendChartTag(downloads, publisher, year);
 }
 function getDataFromView(){
-    allYears = getYears();
-    allPublisher = getPublisher();
+//    allYears = getYears();
+//    allPublisher = getPublisher();
+    allYears = ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'];
+    allPublisher = ['Annual Reviews', 'Elsevier', 'Springer','Wiley'];
 }
 
 function getYears(){    
