@@ -150,7 +150,7 @@ function landingSearch() {
 /* detect loading states and update UI */
 $(document).ready(function(){
     
-    
+    getAllData();
 //    Pace.on("start", function(){
         
 //    });
