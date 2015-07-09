@@ -12,6 +12,7 @@ var issnVal = "";
 var posInArray = 0;
 var issnInArray = 0;
 var ko = 0;
+var totalJournalDownloads = [];
 
 function initSearchData() {
     
@@ -78,6 +79,7 @@ function getSelectedJournalData() {
     currentJournal = journalObjectComplete[posInArray]["Online ISSN"];
     var array = [];
     var years = [2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014]
+    totalJournalDownloads = [];
     $(years).each(function(index, year){
      $.getJSON("./data/merge" + year + ".json", function(json){
          
@@ -92,10 +94,11 @@ function getSelectedJournalData() {
             console.log("load");
              console.log(Object.size(array));
             setData(array);
-             loadData(array);
+            loadData(array);
         }
          
-
+         
+         
      });
         
         
@@ -130,6 +133,8 @@ function getDownloadsForJournal(year, totalDownloads, titel){
         downloads.push(totalDownloads['Oct-'+ year]);
         downloads.push(totalDownloads['Nov '+ year.substring(2,4)]);
         downloads.push(totalDownloads['Dec-' + year]);
+    
+        totalJournalDownloads.push(totalDownloads['YTD Total']);
     
 //    downloads.unshift(titel +" " + year);
     
