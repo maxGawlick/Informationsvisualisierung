@@ -13,6 +13,7 @@ var posInArray = 0;
 var issnInArray = 0;
 var ko = 0;
 var totalJournalDownloads = [];
+var titel = "";
 
 function initSearchData() {
     
@@ -55,12 +56,12 @@ function handleButtonClick() {
         posInArray = jQuery.inArray(searchVal, journalTitles);
         issnInArray = jQuery.inArray(issnVal, journalISSN);
 
-        updateDetailView();
+        updateDetailView(searchVal);
         
 
 }
 
-function updateDetailView() {
+function updateDetailView(arg) {
     /*check if title input is empty (undefined), if true set posInarray to value of issninarray */
         if(! journalObjectComplete[posInArray]["Title"]) {
          posInArray = issnInArray;   
@@ -71,21 +72,24 @@ function updateDetailView() {
         $('#journalPrintISSN').hide().html(journalObjectComplete[posInArray]["Print ISSN"]).fadeIn('slow');
         $('#journalOnlineISSN').hide().html(journalObjectComplete[posInArray]["Online ISSN"]).fadeIn('slow');
         document.getElementById("ezblink").href= ezbLinkFront + journalObjectComplete[posInArray]["Online ISSN"]; 
-        
-        getSelectedJournalData();
+        console.log(arg);
+        getSelectedJournalData(arg);
         drawDetailGraph();
 }
 
-function getSelectedJournalData() {
-    
+function getSelectedJournalData(arg) {
+    titel = arg;
+    console.log(arg);
+    console.log(titel);
     currentJournal = journalObjectComplete[posInArray]["Online ISSN"];
     var array = [];
     var years = [2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014]
     totalJournalDownloads = [];
     $(years).each(function(index, year){
-     $.getJSON("./data/merge" + year + ".json", function(json){
+     $.getJSON("./data/merge" + year + ".json", function(json, titel){
          
-     journalDetail = "select * from json.journals where (Title=='' + searchValLanding)";
+     journalDetail = "select * from json.journals where (Title=='' + titel)";
+         console.log("arg----------------", titel);
      
      journalDetailObjects = jsonsql.query(journalDetail, json);
          
@@ -151,13 +155,14 @@ function landingSearch() {
     searchValLanding = $("#landingSearch").val();
     $("#searchInput").val(searchValLanding);
     posInArray = jQuery.inArray(searchValLanding, journalTitles);
-    updateDetailView();
+    console.log("CHART------------", Chart.data);
+    updateDetailView(searchValLanding);
+    
 }
 
 /* detect loading states and update UI */
 $(document).ready(function(){
     
-    getAllData();
 //    Pace.on("start", function(){
         
 //    });

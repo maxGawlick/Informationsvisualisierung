@@ -1,4 +1,5 @@
 var substringMatcher = function(strs) {
+    console.log("substringMatcher");
   return function findMatches(q, cb) {
     var matches, substringRegex;
  
