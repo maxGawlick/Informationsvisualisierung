@@ -124,7 +124,6 @@ function getAllData(){
 }
 
 function appendChartTag(arg, publisher, year){
-    
         var x = arg;
         x.unshift(publisher + " " + year);
     
@@ -153,9 +152,9 @@ function getJSON(callback){
                          query = "select * from json.journals where (Title=='Total for all journals')";
 
                          totalDownloads = jsonsql.query(query, json);
-//                        console.log(totalDownloads);
+                        console.log("totaldownloads",totalDownloads);
                         dataObject = createDataObject(totalDownloads, year);
-                      //  console.log(dataObject);
+                        console.log("dataObject",dataObject);
                         
                         
                         
@@ -165,7 +164,6 @@ function getJSON(callback){
                     });
             promises.push(promise);
         });
-    
     
     $.when.apply($, promises).done(function() {
        var args = arguments; 
@@ -206,7 +204,6 @@ function getDownloadsForPublisher(year, totalDownloads, publisher){
         downloads.push(totalDownloads['Oct-'+ year]);
         downloads.push(totalDownloads['Nov '+ year.substring(2,4)]);
         downloads.push(totalDownloads['Dec-' + year]);
-//    console.log("asdasd: ", downloads);
     
     return appendChartTag(downloads, publisher, year);
 }

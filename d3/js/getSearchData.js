@@ -16,6 +16,8 @@ var totalJournalDownloads = [];
 
 function initSearchData() {
     
+    console.log("nanana");
+    
      for(var year = 2003; year <= 2014; year++) {
      $.getJSON("./data/merge" + year + ".json", function(json){
          
@@ -168,5 +170,8 @@ $(document).ready(function(){
           $("#landingSearchbtn").removeAttr('disabled');
           document.getElementById("landingSearch").focus();
     });
+    
+            
+            getAllData();
     
 });
