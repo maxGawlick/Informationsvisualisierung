@@ -39,15 +39,16 @@ getData = function(){
 },
 
 setData = function(obj){
+    console.log("setData");
     data = obj;
 },
 
 displayData = function(years, allPublisher){    
-    
+    console.log("displayData");
     for(var y in years){
         for(var p in allPublisher){
             var obj = data[years[y]][allPublisher[p]];
-//            console.log(obj);
+            console.log(obj);
             if(!(obj == null)){
                 addData(obj);                   
             }                             
@@ -104,6 +105,7 @@ toggleData = function(publisher, years){
 },
 
 addData = function(obj, cat){
+    console.log(obj);
     lineChart.load({
         columns:[
             obj            
