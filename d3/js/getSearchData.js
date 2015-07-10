@@ -42,6 +42,7 @@ function initSearchData() {
 /* HANDLE search button and update journal detail view */
 function handleButtonClick() {
 
+<<<<<<< HEAD
     searchVal = $("#searchInput").val();
     issnVal = $("#issnInput").val();
     posInArray = jQuery.inArray(searchVal, journalTitles);
@@ -94,7 +95,6 @@ function getSelectedJournalData(arg) {
 
 
     });
-
 }
 
 function createSearchDataObject(totalDownloadsPerYear, year) {
@@ -111,6 +111,7 @@ function createSearchDataObject(totalDownloadsPerYear, year) {
 function getDownloadsForJournal(year, totalDownloads, titel) {
 
     var downloads = [];
+<<<<<<< HEAD
     downloads.push(totalDownloads['Jan ' + year.substring(2, 4)]);
     downloads.push(totalDownloads['Feb ' + year.substring(2, 4)]);
     downloads.push(totalDownloads['Mar-' + year]);
@@ -125,7 +126,6 @@ function getDownloadsForJournal(year, totalDownloads, titel) {
     downloads.push(totalDownloads['Dec-' + year]);
 
     totalJournalDownloads.push(totalDownloads['YTD Total']);
-
     return downloads;
 }
 
@@ -137,6 +137,7 @@ function landingSearch() {
     searchValLanding = $("#landingSearch").val();
     $("#searchInput").val(searchValLanding);
     posInArray = jQuery.inArray(searchValLanding, journalTitles);
+<<<<<<< HEAD
     updateDetailView(searchValLanding);
 
 }

@@ -235,6 +235,10 @@ div#the-basics {
   margin: 1%;
   text-align: center;
 }
+.chartButtons{
+  margin: 1%;
+  text-align: center;
+}
 .hidden{
     display: none;
 }

@@ -15,36 +15,102 @@
 
 
     </style>
-</head>
+  </head>
 
-<body style="background-color: rgb(241, 242, 246);">
+  <body style="background-color: rgb(241, 242, 246);">
+      
+<div id="container">
 
-    <div id="container">
-        <div>
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Journal Explorer</a>
-                    </div>
-                    <div>
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Suche</a></li>
-                            <li><a href="#" onClick="showDownloads();">Erkunden</a></li>
-                        </ul>
-                        <div style="padding-right:110px;">
-                            <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary navbar-btn pull-right">Info</button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+<div>  
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+        </button>
+      <a class="navbar-brand" href="#">Journal Explorer</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Suche</a></li>
+        <li><a href="#" onClick="showDownloads();">Erkunden</a></li> 
+      </ul>
+          <div style="padding-right:110px;">
+        <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary navbar-btn pull-right">Info</button>
         </div>
+        </div>
+    </div>
+  </nav>
+</div>
 
+ 
+<div class="row cont">
+
+      
+<!-- MODAL -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Journal Explorer - About</h4>
+      </div>
+        <hr>
+      <div class="modal-body">
+          
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datensatz</h3>
+            </div>
+            <div class="panel-body">
+                <p>Die verwendeten Datensätze gliedern sich in 4 Verläge:</p>
+                <ul>
+                <li>Annual Reviews / ~50 Items</li>
+                <li>Elsevier / ~2000 Items</li>
+                <li>Springer / ~2000 Items</li>
+                <li>Wiley / ~2000 Items</li>
+                </ul>
+                
+                <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 vor (mit Lücken). </p>
+                <p>Die 43 Dateien liegen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
+                <hr>
+                <p>Insgesamt gibt es ca. 8000 einzelne Zeitschriften</p>
+                <p><strong>Einzelansicht:</strong></p>
+                <img alt="Einzelansicht Journal" src="jour.png"> 
+            </div>
+        </div>
+          
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Funktionsumfang</h3>
+            </div>
+            <div class="panel-body">
+                <p>"Journal Explorer" besteht aus 2 Hauptkomponenten:</p>
+                <ul>
+                <li><strong>Suche:</strong> Einzelne Journals suchen und dessen Daten einsehen</li>
+                <li><strong>Daten explorieren:</strong> Downloadzahlen von Verlägen zeitlich vergleichen</li>
+                </ul>
+                <p>Beide Funktionen bieten dem Nutzer verschiedene Visualisierungsarten</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Bedienung</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                <li><strong>Suche:</strong> Über ein Auto-complete Feld kann nach einem Journal gesucht werden. Die Anschließende Detailansicht zeigt alle Daten 
+                    des gewählten Journals. Außerdem lässt sich in der Detailansicht auch mittels der ISSN suchen.
+                    </li>
+                <li><strong>Daten explorieren:</strong> In dieser Ansicht hat der Nutzer die Möglichkeit die Downloadzahlen der Verläge untereinander zu vergleichen. Es lässt sich eine Zeitspanne von 2003 - 2014 einstellen, wobei nicht für jeden Verlag in jedem Jahr Daten vorliegen. Alle 4 Verläge können ab und an gewählt werden. In der Visualisierung lässt sich zommen sowie scrollen (wenn gezoomt). Die Visulisierungsart kann von Linien- (Standard) zu Balken-, Donut- bzw. Flächendiagramm gewechselt werden.</li>
+                </ul>
+            </div>
+        </div>
 
         <div class="row cont">
             <!-- MODAL -->
@@ -215,27 +281,32 @@
 
 
 
-                                <button id="transformBar" class="btn btn-default" onClick="yearOverview();">
-                                    <i class="fa fa-bar-chart"></i>
-                                </button>
-
-                                <button id="transformLine" class="btn btn-default" onClick="monthOverview();">
-                                    <i class="fa fa-line-chart"></i>
-                                </button>
+                             <div class="chartButtons">
+                    <button id="transformBar" class="btn btn-default" onClick="yearOverview();">
+                        Jahresansicht
+                    </button>
+            
+                    <button id="transformLine" class="btn btn-default" onClick="monthOverview();">
+                        Monatsansicht
+                    </button>
+               </div>
 
                                 <div class="col-md-8">
 
                                     <div id="journalChart"></div>
                                 </div>
                             </div>
-
+                        </div>
                         </div>
                     </div>
                 </div>
-
-
-            </div>
-
+            </div>   
+        </div>
+    </div>
+        </div>
+        </div>
+    </div>
+      </div>
             <script src="js/jquery.min.js"></script>
             <script src="js/lodash.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
@@ -263,7 +334,6 @@
 
             </script>
 
-        </div>
 </body>
 
 </html>

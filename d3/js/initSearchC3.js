@@ -5,6 +5,7 @@ var arg = {};
 function drawDetailGraph() {
     setTimeout(function () {
         journalChart = c3.generate({
+<<<<<<< HEAD
             bindto: "#journalChart",
             data: {
                 columns: [
@@ -28,7 +29,6 @@ function drawDetailGraph() {
 function loadData(arg) {
     this.arg = arg;
     setTimeout(function () {
-
         journalChart.load({
             json: arg,
             axis: {
@@ -89,4 +89,5 @@ function monthOverview() {
             }
         });
     }, 1000);
+
 }
