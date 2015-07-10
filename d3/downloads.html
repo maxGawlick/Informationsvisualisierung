@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
     <link href="css/c3.min.css" rel="stylesheet" type="text/css">
@@ -15,240 +16,162 @@
 
 
     </style>
-  </head>
+</head>
 
-  <body style="background-color: rgb(241, 242, 246);">
-      
+<body style="background-color: rgb(241, 242, 246);">
 
-
-      <div>  
-
-  <nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="index.html">Journal Explorer</a>
-      </div>
-        <div>
-        <ul class="nav navbar-nav">
-        <li><a href="index.html">Suche</a></li>
-        <li class="active"><a>Vergleichen</a></li> 
-      </ul>
-        </div>
-    </div>
-  </nav>
-</div>
-      
-
-<div class="row cont">
-
-<!--    <nav class="">-->
-    <div class="col-md-3">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Filter</h3>
+    <div>
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Journal Explorer</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Suche</a></li>
+                        <li class="active"><a>Vergleichen</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="panel-body">
-                <h5>Jahr wählen:</h5>
-                
+        </nav>
+    </div>
 
-                <select multiple class="form-control" id="yearselect" >
-                    <option value="2003" selected>2003</option>
-                    <option value="2004">2004</option>
-                    <option value="2005">2005</option>
-                    <option value="2006">2006</option>
-                    <option value="2007">2007</option>
-                    <option value="2008">2008</option>
-                    <option value="2009">2009</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                </select>
-                
+    <div class="row cont">
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Filter</h3>
+                </div>
+                <div class="panel-body">
+                    <h5>Jahr wählen:</h5>
+                    <select multiple class="form-control" id="yearselect">
+                        <option value="2003" selected>2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                    </select>
                     <hr>
-                    <h5>Verlag wählen:</h5>      
+                    <h5>Verlag wählen:</h5>
                     <div class="container">
                         <form id="publisherSelect" role="form">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="verlagradio" id="annualRadio" value="Annual Reviews" checked="checked">
-                                    Annual Reviews
+                                    <input type="checkbox" name="verlagradio" id="annualRadio" value="Annual Reviews" checked="checked"> Annual Reviews
                                 </label>
                             </div>
-                            
-
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" id="elsevier" name="verlagradio" id="elsevierRadio" value="Elsevier">
-                                    Elsevier
+                                    <input type="checkbox" id="elsevier" name="verlagradio" id="elsevierRadio" value="Elsevier"> Elsevier
                                 </label>
                             </div>
-                            
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="verlagradio" id="springerRadio" value="Springer">
-                                    Springer
+                                    <input type="checkbox" name="verlagradio" id="springerRadio" value="Springer"> Springer
                                 </label>
                             </div>
-        
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="verlagradio" id="wileyRadio" value="Wiley">
-                                    Wiley
+                                    <input type="checkbox" name="verlagradio" id="wileyRadio" value="Wiley"> Wiley
                                 </label>
                             </div>
-
-                            
                         </form>
-
-                    </div> <!-- /.container -->  
-                <hr>
-
-
-                <button type="button" onClick="update();" id="updateGraph"class="btn btn-default" >
-                    <span class="glyphicon glyphicon-refresh"></span> Update</button>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="semesterRadio" id="semesterRadio" onChange="Chart.toggleRegions()" checked> Regions
-                    </label>
+                    </div>
+                    <hr>
+                    <button type="button" onClick="update();" id="updateGraph" class="btn btn-default">
+                        <span class="glyphicon glyphicon-refresh"></span> Update</button>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="semesterRadio" id="semesterRadio" onChange="Chart.toggleRegions()" checked> Regions
+                        </label>
+                    </div>
                 </div>
-
             </div>
         </div>
-    </div>
-<!--      </nav>-->
-    
-<!--    <article class="">-->
-
-
-
-    <div class="widget-container">
-     <div class="col-md-9 widget">
-<!--
-          <div class="panel panel-danger widget-content front">
-            <div class="panel-heading">
-                <h3 class="panel-title">Erfolgreiche Volltext-Anfragen</h3>
-            </div>
-            <div class="panel-body">
-                 overlay 
-                <div style=" position:absolute;">
-                <p id="downloadsTotal">Downloads Total: </p>
-                <p id="downloadsMonth">Downloads Monat: </p>
+        <div class="widget-container">
+            <div class="col-md-9 widget">
+                <div class="panel panel-primary widget-content ">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Erfolgreiche Anfragen pro Monat</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="chartButtons">
+                            <button id="transformBar" class="btn btn-default" onClick="Chart.transformBar();">
+                                <i class="fa fa-bar-chart"></i>
+                            </button>
+                            <button id="transformLine" class="btn btn-default" onClick="Chart.transformLine();">
+                                <i class="fa fa-line-chart"></i>
+                            </button>
+                            <button id="transformDonut" class="btn btn-default" onClick="Chart.transformDonut();">
+                                <i class="fa fa-pie-chart"></i>
+                            </button>
+                            <button id="transformAreaSpline" class="btn btn-default" onClick="Chart.transformAreaSpline();">
+                                <i class="fa fa-area-chart"></i>
+                            </button>
+                        </div>
+                        <div id="chart2"></div>
+                    </div>
                 </div>
-
-                <div id="chart"></div>
             </div>
-          </div>
--->
-          <div class="panel panel-primary widget-content ">
-            <div class="panel-heading">
-                <h3 class="panel-title">Erfolgreiche Anfragen pro Monat</h3>
-            </div>
-            <div class="panel-body">
-                <div id="chartButtons">
-                    <button id="transformBar" class="btn btn-default" onClick="Chart.transformBar();">
-                        <i class="fa fa-bar-chart"></i>
-                    </button>
-                    <button id="transformLine" class="btn btn-default" onClick="Chart.transformLine();">
-                        <i class="fa fa-line-chart"></i>
-                    </button>
-                    <button id="transformDonut" class="btn btn-default" onClick="Chart.transformDonut();">
-                        <i class="fa fa-pie-chart"></i>
-                    </button>
-                    <button id="transformAreaSpline" class="btn btn-default" onClick="Chart.transformAreaSpline();">
-                        <i class="fa fa-area-chart"></i>
-                    </button>
+        </div>
 
-                </div>
-           
-                <div id="chart2"></div>
-            </div>
-          </div>
-        
+        <script>
+            $(document).ready(function() {
+                var years = ['2003'];
 
-     </div> 
-    </div>
-<!--    </article>  /col-md-8 -->
+                $(':checkbox').change(function() {
+                    var publisher = [$(this).val()];
+                    var year = Chart.getSelectedYears();
+                    Chart.toggleData(publisher, year);
+                })
 
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/lodash.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="js/c3.min.js"></script>
-<!--    <script src="js/d3.v3.min.js"></script>-->
-    <script src="js/jsonsql.js"></script>
-    <script src="js/chartconfig.js"></script>
-    <script src="js/getJsonData.js"></script>
-    <script src="js/compare.js"></script>
-    <script>
-
-        $(document).ready(function(){
-            
-            var years = ['2003'];
-
-            $(':checkbox').change(function(){
-                var publisher = [$(this).val()];
-                var year = Chart.getSelectedYears();
-                Chart.toggleData(publisher, year);
-            })
-
-            $('#yearselect').change(function(element, checked) {
-                
-                var allYears = getYears();
-                selectedPublisher = getPublisherRadio();
-                newYears = $(this).val();
-                
-                var showYears = [];
-                _.each(newYears, function(newYear) {
-                    if(-1 === _.indexOf(years, newYear)) {
-                        showYears.push(newYear);
-                    }
-                });
-                
-                var hideYears = [];
-                _.each(years, function(year) {
-                    if(-1 === _.indexOf(newYears, year)) {
-                        hideYears.push(year);
-                    }
-                });
-                
+                $('#yearselect').change(function(element, checked) {
+                    var allYears = getYears();
+                    selectedPublisher = getPublisherRadio();
+                    newYears = $(this).val();
                     
-                var toggleYears = _.uniq(showYears.concat(hideYears));
+                    var showYears = [];
+                    _.each(newYears, function(newYear) {
+                        if (-1 === _.indexOf(years, newYear)) {
+                            showYears.push(newYear);
+                        }
+                    });
 
-                //Chart.showData(allYears, selectedPublisher, years);
-                console.log("years:" , years);
-                console.log("newYears:" , newYears);
-                console.log("showYears:" , showYears);
-                console.log("hideYears:" , hideYears);
-                console.log("as", toggleYears);
-                Chart.toggleData(selectedPublisher, toggleYears);
+                    var hideYears = [];
+                    _.each(years, function(year) {
+                        if (-1 === _.indexOf(newYears, year)) {
+                            hideYears.push(year);
+                        }
+                    });
 
-                years = newYears;
+                    var toggleYears = _.uniq(showYears.concat(hideYears));
+                    Chart.toggleData(selectedPublisher, toggleYears);
 
+                    years = newYears;
 
-            })
-            
-            Chart.generate({});
-            setTimeout(function(){
-                console.log(Chart.data);
+                    
+                })
+                Chart.generate();
                 Chart.displayData(getYears(), getPublisher());
- //               update();
+                update();
+            })
 
-            }, 1000);
-//            getAllData();
-            
-        })
-    </script>
-      
+        </script>
 
-  </body>
+
+</body>
+
 </html>

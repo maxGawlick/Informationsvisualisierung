@@ -6,6 +6,7 @@
     
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="css/c3.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <title>Journal Explorer</title>
@@ -17,7 +18,7 @@
 
   <body style="background-color: rgb(241, 242, 246);">
       
-
+<div id="container">
 
 <div>  
   <nav class="navbar navbar-inverse" role="navigation">
@@ -34,7 +35,7 @@
       <div>
         <ul class="nav navbar-nav">
         <li class="active"><a href="#">Suche</a></li>
-        <li><a href="downloads.html">Vergleichen</a></li> 
+        <li><a href="#" onClick="showDownloads();">Vergleichen</a></li> 
       </ul>
           <div style="padding-right:110px;">
         <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary navbar-btn pull-right">Info</button>
@@ -75,21 +76,40 @@
                 </ul>
                 
                 <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 vor (mit Lücken). </p>
-                <p>Die (43) Dateien lagen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
+                <p>Die 43 Dateien liegen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
+                <hr>
+                <p>Insgesamt gibt es ca. 8000 einzelne Zeitschriften</p>
+                <p><strong>Einzelansicht:</strong></p>
+                <img alt="Einzelansicht Journal" src="jour.png"> 
             </div>
         </div>
           
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Zeitschriften</h3>
+                <h3 class="panel-title">Funktionsumfang</h3>
             </div>
             <div class="panel-body">
-                <p>Insgesamt gibts es ca. 8000 einzelne Zeitschriften</p>
-                <p><strong>Einzelansicht:</strong></p>
-                <img alt="Einzelansicht Journal" src="jour.png"> 
+                <p>"Journal Explorer" besteht aus 2 Hauptkomponenten:</p>
+                <ul>
+                <li><strong>Suche:</strong> Einzelne Journals suchen und dessen Daten einsehen</li>
+                <li><strong>Daten explorieren:</strong> Downloadzahlen von Verlägen zeitlich vergleichen</li>
+                </ul>
+                <p>Beide Funktionen bieten dem Nutzer verschiedene Visualisierungsarten</p>
             </div>
         </div>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Bedienung</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                <li><strong>Suche:</strong> Über ein Auto-complete Feld kann nach einem Journal gesucht werden. Die Anschließende Detailansicht zeigt alle Daten 
+                    des gewählten Journals. Außerdem lässt sich in der Detailansicht auch mittels der ISSN suchen.
+                    </li>
+                <li><strong>Daten explorieren:</strong> In dieser Ansicht hat der Nutzer die Möglichkeit die Downloadzahlen der Verläge untereinander zu vergleichen. Es lässt sich eine Zeitspanne von 2003 - 2014 einstellen, wobei nicht für jeden Verlag in jedem Jahr Daten vorliegen. Alle 4 Verläge können ab und an gewählt werden. In der Visualisierung lässt sich zommen sowie scrollen (wenn gezoomt). Die Visulisierungsart kann von Linien- (Standard) zu Balken-, Donut- bzw. Flächendiagramm gewechselt werden.</li>
+                </ul>
+            </div>
+        </div>
 
       </div>
       <div class="modal-footer">
@@ -213,6 +233,15 @@
             </div>
 
                
+               <div class="chartButtons">
+                    <button id="transformBar" class="btn btn-default" onClick="yearOverview();">
+                        Jahresansicht
+                    </button>
+            
+                    <button id="transformLine" class="btn btn-default" onClick="monthOverview();">
+                        Monatsansicht
+                    </button>
+               </div>
             <div class="col-md-8">
 
                <div id="journalChart"></div> 
@@ -227,18 +256,33 @@
     </div>
 
     <script src="js/jquery.min.js"></script>
+    <script src="js/lodash.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/c3.min.js"></script>
+    <script src="js/mustache.js"></script>
     <script src="js/initSearchC3.js"></script>
     <script src="js/jsonsql.js"></script>    
     <script src="js/pase.js"></script>
     <script src="js/typehead.js"></script>
     <script src="js/getSearchData.js"></script>
     <script src="js/initAutocomplete.js"></script>
+    <script src="js/chartconfig.js"></script>
     <script src="js/getJsonData.js"></script>
     <script src="js/compare.js"></script>
     
-
+    <script>
+        function showDownloads(){
+            console.log(Chart.data);
+          $.get('downloads.html', function(template) {
+            var rendered = Mustache.render(template);
+            $('#container').html(rendered);
+          });
+            
+        };
+        
+    </script>
+    
+    </div>
   </body>
 </html>

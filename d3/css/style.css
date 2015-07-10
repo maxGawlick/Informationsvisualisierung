@@ -149,7 +149,7 @@ footer p {
 }
 .tt-suggestion:hover {
    color: white;
-   background-color: #DA4453;
+   background-color: #3bafda;
    cursor: pointer;
 }
 
@@ -232,6 +232,10 @@ div#the-basics {
  margin-left:170px;   
 }
 #chartButtons{
+  margin: 1%;
+  text-align: center;
+}
+.chartButtons{
   margin: 1%;
   text-align: center;
 }
