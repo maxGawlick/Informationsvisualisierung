@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="css/bootflat.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -14,256 +15,255 @@
 
 
     </style>
-  </head>
+</head>
 
-  <body style="background-color: rgb(241, 242, 246);">
-      
-<div id="container">
+<body style="background-color: rgb(241, 242, 246);">
 
-<div>  
-  <nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-        </button>
-      <a class="navbar-brand" href="#">Journal Explorer</a>
-      </div>
-      <div>
-        <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Suche</a></li>
-        <li><a href="#" onClick="showDownloads();">Vergleichen</a></li> 
-      </ul>
-          <div style="padding-right:110px;">
-        <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary navbar-btn pull-right">Info</button>
-        </div>
-        </div>
-    </div>
-  </nav>
-</div>
-
- 
-<div class="row cont">
-
-      
-<!-- MODAL -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Journal Explorer - About</h4>
-      </div>
-        <hr>
-      <div class="modal-body">
-          
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Datensatz</h3>
-            </div>
-            <div class="panel-body">
-                <p>Die verwendeten Datensätze gliedern sich in 4 Verläge:</p>
-                <ul>
-                <li>Annual Reviews / ~50 Items</li>
-                <li>Elsevier / ~2000 Items</li>
-                <li>Springer / ~2000 Items</li>
-                <li>Wiley / ~2000 Items</li>
-                </ul>
-                
-                <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 vor (mit Lücken). </p>
-                <p>Die (43) Dateien lagen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
-            </div>
-        </div>
-          
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Zeitschriften</h3>
-            </div>
-            <div class="panel-body">
-                <p>Insgesamt gibts es ca. 8000 einzelne Zeitschriften</p>
-                <p><strong>Einzelansicht:</strong></p>
-                <img alt="Einzelansicht Journal" src="jour.png"> 
-            </div>
+    <div id="container">
+        <div>
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Journal Explorer</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Suche</a></li>
+                            <li><a href="#" onClick="showDownloads();">Erkunden</a></li>
+                        </ul>
+                        <div style="padding-right:110px;">
+                            <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary navbar-btn pull-right">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-      </div>
-    </div>
+        <div class="row cont">
+            <!-- MODAL -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
 
-  </div>
-</div>
-      
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Journal Explorer - About</h4>
+                        </div>
+                        <hr>
+                        <div class="modal-body">
 
-<!-- jumbotron / landingpage -->
-<div id="jumbo" class="container jumbo">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Datensatz</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Die verwendeten Datensätze gliedern sich in 4 Verläge:</p>
+                                    <ul>
+                                        <li>Annual Reviews / ~50 Items</li>
+                                        <li>Elsevier / ~2000 Items</li>
+                                        <li>Springer / ~2000 Items</li>
+                                        <li>Wiley / ~2000 Items</li>
+                                    </ul>
 
-  <h1>Journal Explorer</h1>
-  <br>
-  <div class="row">
-    <div class="col-md-3"></div>
-      <div class="col-md-6">
-           <div class="input-group">
-            <div id="the-basics">
-                <input id="landingSearch"class="typeahead form-control input-lg" type="text" placeholder="Zeitschrift suchen..." disabled>
+                                    <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 vor (mit Lücken). </p>
+                                    <p>Die (43) Dateien lagen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Zeitschriften</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Insgesamt gibts es ca. 8000 einzelne Zeitschriften</p>
+                                    <p><strong>Einzelansicht:</strong></p>
+                                    <img alt="Einzelansicht Journal" src="jour.png">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-           
-            <span class="input-group-btn">
-                <button onClick="landingSearch();"id="landingSearchbtn"class="btn btn-primary btn-lg" type="button" disabled>Go!</button>
-            </span>
-           </div><!-- /input-group -->
-      </div> <!-- /col-md-6 -->
-    <div class="col-md-3">
-   
-  </div>      
-    
-</div>
-    <h6>In <span id="nrOfJournals"></span> Einträgen suchen</h6>
-</div>
- 
-<div id="searchcont" class="row cont">
 
-<!--    <nav class="">-->
-    <div class="col-md-3">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Suche  |  <span id="nrOfJournals"></span> Zeitschriften</h3>
+
+            <!-- jumbotron / landingpage -->
+            <div id="jumbo" class="container jumbo">
+
+                <h1>Journal Explorer</h1>
+                <br>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div id="the-basics">
+                                <input id="landingSearch" class="typeahead form-control input-lg" type="text" placeholder="Zeitschrift suchen..." disabled>
+                            </div>
+
+                            <span class="input-group-btn">
+                                <button onClick="landingSearch();"id="landingSearchbtn"class="btn btn-primary btn-lg" type="button" disabled>Go!</button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <!-- /col-md-6 -->
+                    <div class="col-md-3">
+
+                    </div>
+
+                </div>
+                <h6>In <span id="nrOfJournals"></span> Einträgen suchen</h6>
+            </div>
+
+            <div id="searchcont" class="row cont">
+
+                <!--    <nav class="">-->
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Suche  |  <span id="nrOfJournals"></span> Zeitschriften</h3>
+
+                        </div>
+                        <div class="panel-body">
+
+                            <p><b>Journal-Suche</b></p>
+
+                            <div id="the-basics2">
+                                <input id="searchInput" class="typeahead form-control" type="text" placeholder="Titel">
+                            </div>
+
+                            <br>
+                            <input id="issnInput" class="typeahead form-control" type="text" placeholder="ISSN">
+
+                            <hr>
+
+                            <button onClick="handleButtonClick();" id="searchbtn" typ="button" class="btn btn-default btn-block searchBtn">Suchen</button>
+
+                        </div>
+                    </div>
+                </div>
+                <!--      </nav>-->
+
+                <!--    <article class="">-->
+                <div class="col-md-9">
+
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <h4 id="journalTitle" class="text-center">Titel</h4>
+
+
+                                    <hr>
+
+                                    <dl class="dl-horizontal">
+                                        <dt>Publisher</dt>
+                                        <dd id="journalPublisher"></dd>
+                                    </dl>
+
+                                    <hr>
+
+                                    <dl class="dl-horizontal">
+                                        <dt>Platform</dt>
+                                        <dd id="journalPlatform"></dd>
+                                    </dl>
+
+                                    <hr>
+
+
+                                    <dl class="dl-horizontal">
+                                        <dt>Print ISSN</dt>
+                                        <dd id="journalPrintISSN"></dd>
+                                    </dl>
+
+
+                                    <hr>
+
+                                    <dl class="dl-horizontal">
+                                        <dt>Online ISSN</dt>
+                                        <dd id="journalOnlineISSN"></dd>
+                                    </dl>
+
+                                    <hr>
+
+                                    <dl class="dl-horizontal">
+                                        <dt>Link</dt>
+                                        <dd id="journalLink"><a target="_blank" id="ezblink">EZB</a></dd>
+                                    </dl>
+
+
+
+                                </div>
+
+
+
+                                <button id="transformBar" class="btn btn-default" onClick="yearOverview();">
+                                    <i class="fa fa-bar-chart"></i>
+                                </button>
+
+                                <button id="transformLine" class="btn btn-default" onClick="monthOverview();">
+                                    <i class="fa fa-line-chart"></i>
+                                </button>
+
+                                <div class="col-md-8">
+
+                                    <div id="journalChart"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
-            <div class="panel-body">
-                
-                  <p><b>Journal-Suche</b></p>
 
-                  <div id="the-basics2">
-                    <input id="searchInput"class="typeahead form-control" type="text" placeholder="Titel">
-                  </div>
-                
-                 <br>
-                 <input id="issnInput" class="typeahead form-control" type="text" placeholder="ISSN">
-                
-                  <hr>
-                
-                  <button onClick="handleButtonClick();" id="searchbtn" typ="button" class="btn btn-default btn-block searchBtn">Suchen</button>
-                        
-            </div>
+            <script src="js/jquery.min.js"></script>
+            <script src="js/lodash.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="http://d3js.org/d3.v3.min.js"></script>
+            <script src="js/c3.min.js"></script>
+            <script src="js/mustache.js"></script>
+            <script src="js/initSearchC3.js"></script>
+            <script src="js/jsonsql.js"></script>
+            <script src="js/pase.js"></script>
+            <script src="js/typehead.js"></script>
+            <script src="js/getSearchData.js"></script>
+            <script src="js/initAutocomplete.js"></script>
+            <script src="js/chartconfig.js"></script>
+            <script src="js/getJsonData.js"></script>
+            <script src="js/compare.js"></script>
+
+            <script>
+                function showDownloads() {
+                    $.get('downloads.html', function(template) {
+                        var rendered = Mustache.render(template);
+                        $('#container').html(rendered);
+                    });
+
+                };
+
+            </script>
+
         </div>
-    </div>
-<!--      </nav>-->
-    
-<!--    <article class="">-->
-    <div class="col-md-9">  
+</body>
 
-      <div class="panel panel-primary">
-
-        <div class="panel-heading">
-            <h3 class="panel-title">Details</h3>
-        </div>
-        <div class="panel-body">
-           <div class="row">
-            <div class="col-md-4">
-                
-               <h4 id="journalTitle"class="text-center">Titel</h4>
-               
-                
-               <hr> 
-               
-                <dl class="dl-horizontal">
-                    <dt>Publisher</dt>
-                        <dd id="journalPublisher"></dd>
-                </dl>
-                
-               <hr>
-                
-               <dl class="dl-horizontal">
-                    <dt>Platform</dt>
-                        <dd id="journalPlatform"></dd>
-                </dl>
-                
-               <hr>
-                
-
-                <dl class="dl-horizontal">
-                    <dt>Print ISSN</dt>
-                        <dd id="journalPrintISSN"></dd>
-                </dl>
-                
-                
-               <hr>
-                
-                <dl class="dl-horizontal">
-                    <dt>Online ISSN</dt>
-                        <dd id="journalOnlineISSN"></dd>
-                </dl>
-                
-               <hr>
-                
-                 <dl class="dl-horizontal">
-                    <dt>Link</dt>
-                        <dd id="journalLink"><a target="_blank" id="ezblink">EZB</a></dd>
-                </dl>
-
-               
-               
-            </div>
-
-               
-               
-                    <button id="transformBar" class="btn btn-default" onClick="yearOverview();">
-                        <i class="fa fa-bar-chart"></i>
-                    </button>
-            
-                    <button id="transformLine" class="btn btn-default" onClick="monthOverview();">
-                        <i class="fa fa-line-chart"></i>
-                    </button>
-               
-            <div class="col-md-8">
-
-               <div id="journalChart"></div> 
-            </div>
-           </div>
-            
-        </div>
-      </div>
-     </div> 
-
-
-    </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/lodash.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="js/c3.min.js"></script>
-    <script src="js/mustache.js"></script>
-    <script src="js/initSearchC3.js"></script>
-    <script src="js/jsonsql.js"></script>    
-    <script src="js/pase.js"></script>
-    <script src="js/typehead.js"></script>
-    <script src="js/getSearchData.js"></script>
-    <script src="js/initAutocomplete.js"></script>
-    <script src="js/chartconfig.js"></script>
-    <script src="js/getJsonData.js"></script>
-    <script src="js/compare.js"></script>
-    
-    <script>
-        function showDownloads(){
-            console.log(Chart.data);
-          $.get('downloads.html', function(template) {
-            var rendered = Mustache.render(template);
-            $('#container').html(rendered);
-          });
-            
-        };
-        
-    </script>
-    
-    </div>
-  </body>
 </html>
