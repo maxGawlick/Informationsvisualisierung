@@ -112,48 +112,7 @@
             </div>
         </div>
 
-        <div class="row cont">
-            <!-- MODAL -->
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Journal Explorer - About</h4>
-                        </div>
-                        <hr>
-                        <div class="modal-body">
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Datensatz</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>Die verwendeten Datensätze gliedern sich in 4 Verläge:</p>
-                                    <ul>
-                                        <li>Annual Reviews / ~50 Items</li>
-                                        <li>Elsevier / ~2000 Items</li>
-                                        <li>Springer / ~2000 Items</li>
-                                        <li>Wiley / ~2000 Items</li>
-                                    </ul>
-
-                                    <p>Für jeden Verlag liegen Daten aus den Jahren 2003 - 2014 vor (mit Lücken). </p>
-                                    <p>Die (43) Dateien lagen als .xcls bzw. .html-Dateien vor und wurden erst in .csv und dann in .json-Dateien umgewandelt</p>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Zeitschriften</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>Insgesamt gibts es ca. 8000 einzelne Zeitschriften</p>
-                                    <p><strong>Einzelansicht:</strong></p>
-                                    <img alt="Einzelansicht Journal" src="jour.png">
-                                </div>
-                            </div>
+        
 
 
                         </div>
@@ -212,7 +171,7 @@
                             </div>
 
                             <br>
-                            <input id="issnInput" class="typeahead form-control" type="text" placeholder="ISSN">
+                            <input id="issnInput" class="typeahead form-control" type="text" placeholder="ISSN" style="display: none;">
 
                             <hr>
 
@@ -302,11 +261,6 @@
                 </div>
             </div>   
         </div>
-    </div>
-        </div>
-        </div>
-    </div>
-      </div>
             <script src="js/jquery.min.js"></script>
             <script src="js/lodash.min.js"></script>
             <script src="js/bootstrap.min.js"></script>

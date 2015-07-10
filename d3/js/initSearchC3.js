@@ -70,12 +70,13 @@ function yearOverview() {
 
 function monthOverview() {
     journalChart.unload();
-
+    
     setTimeout(function () {
         journalChart = c3.generate({
             bindto: "#journalChart",
             data: {
-                json: arg
+                json: arg,
+                type: 'bar',
             },
             axis: {
                 x: {
@@ -87,6 +88,5 @@ function monthOverview() {
                 enabled: true
             }
         });
-    }, 1000);
-
+    }, 500);
 }

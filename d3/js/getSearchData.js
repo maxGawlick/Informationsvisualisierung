@@ -13,6 +13,8 @@ var issnInArray = 0;
 var ko = 0;
 var totalJournalDownloads = [];
 var titel = "";
+var checkWhichInput = 0;
+var issn = ['Online ISSN'];
 
 function initSearchData() {
     for (var year = 2003; year <= 2014; year++) {
@@ -44,6 +46,14 @@ function handleButtonClick() {
 
     searchVal = $("#searchInput").val();
     issnVal = $("#issnInput").val();
+    if(searchVal.length > 0) {
+        checkWhichInput = 1;
+    }
+    else if(issnVal.length > 0 && searchVal.length < 1) {
+        
+        checkWhichInput = 2;
+    }
+    
     posInArray = jQuery.inArray(searchVal, journalTitles);
     issnInArray = jQuery.inArray(issnVal, journalISSN);
 
@@ -71,11 +81,13 @@ function getSelectedJournalData(arg) {
     titel = arg;
     currentJournal = journalObjectComplete[posInArray]["Online ISSN"];
     var array = [];
+    
     var years = [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014]
     totalJournalDownloads = [];
     $(years).each(function (index, year) {
         $.getJSON("./data/merge" + year + ".json", function (json, titel) {
-
+            
+            console.log(currentJournal);
             journalDetail = "select * from json.journals where (Title=='' + titel)";
 
             journalDetailObjects = jsonsql.query(journalDetail, json);
@@ -110,7 +122,7 @@ function createSearchDataObject(totalDownloadsPerYear, year) {
 function getDownloadsForJournal(year, totalDownloads, titel) {
 
     var downloads = [];
-<<<<<<< HEAD
+
     downloads.push(totalDownloads['Jan ' + year.substring(2, 4)]);
     downloads.push(totalDownloads['Feb ' + year.substring(2, 4)]);
     downloads.push(totalDownloads['Mar-' + year]);
@@ -136,7 +148,7 @@ function landingSearch() {
     searchValLanding = $("#landingSearch").val();
     $("#searchInput").val(searchValLanding);
     posInArray = jQuery.inArray(searchValLanding, journalTitles);
-<<<<<<< HEAD
+
     updateDetailView(searchValLanding);
 
 }
