@@ -42,7 +42,6 @@ function initSearchData() {
 /* HANDLE search button and update journal detail view */
 function handleButtonClick() {
 
-<<<<<<< HEAD
     searchVal = $("#searchInput").val();
     issnVal = $("#issnInput").val();
     posInArray = jQuery.inArray(searchVal, journalTitles);

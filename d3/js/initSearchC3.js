@@ -5,7 +5,6 @@ var arg = {};
 function drawDetailGraph() {
     setTimeout(function () {
         journalChart = c3.generate({
-<<<<<<< HEAD
             bindto: "#journalChart",
             data: {
                 columns: [
